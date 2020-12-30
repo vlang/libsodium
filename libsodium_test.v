@@ -8,7 +8,8 @@ fn test_random() {
 
 fn test_secret_box() {
 	box := new_secret_box('key')
-	b := box.encrypt_string('hello')
-	res := box.decrypt_string(b)
-	println(res)
+	encrypted := box.encrypt_string('hello')
+	decrypted := box.decrypt_string(encrypted)
+	assert decrypted == 'hello'
+	println(decrypted)
 }

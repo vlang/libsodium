@@ -8,4 +8,13 @@ Usage:
 import libsodium
 
 println(libsodium.randombytes_random())
+
+// Secret-key cryptography
+box := libsodium.new_secret_box('key')
+encrypted := box.encrypt_string('hello')
+decrypted := box.decrypt_string(encrypted)
+assert decrypted == 'hello'
+println(decrypted)
+
+
 ```
