@@ -48,21 +48,15 @@ pub fn (box SecretBox) encrypt(b []byte) []byte {
 }
 
 pub fn (box SecretBox) decrypt(b []byte) []byte {
-	decrypted := [5]byte{}
-	C.crypto_secretbox_open_easy(decrypted, b.data, b.len, box.nonce, box.key)
-	mut res := []byte{len: 5}
-	for i in 0 .. 5 {
-		res[i] = decrypted[i]
-	}
-	return res
+	len := b.len - mac_size
+	decrypted := []byte{len: len}
+	C.crypto_secretbox_open_easy(decrypted.data, b.data, b.len, box.nonce, box.key)
+	return decrypted
 }
 
 pub fn (box SecretBox) decrypt_string(b []byte) string {
-	decrypted := [5]byte{}
-	C.crypto_secretbox_open_easy(decrypted, b.data, b.len, box.nonce, box.key)
-	mut res := []byte{len: 5}
-	for i in 0 .. 5 {
-		res[i] = decrypted[i]
-	}
-	return string(res)
+	len := b.len - mac_size
+	decrypted := []byte{len: len}
+	C.crypto_secretbox_open_easy(decrypted.data, b.data, b.len, box.nonce, box.key)
+	return string(decrypted)
 }
