@@ -22,5 +22,9 @@ decrypted := box.decrypt_string(encrypted)
 assert decrypted == 'hello'
 println(decrypted)
 
+encrypted_bytes := box.encrypt([byte(0), 1, 2, 3])
+decrypted_bytes := box.decrypt(encrypted_bytes)
+assert decrypted_bytes == [byte(0), 1, 2, 3]
+
 
 ```
