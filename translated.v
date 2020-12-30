@@ -2883,3 +2883,6 @@ fn C.crypto_core_ed25519_scalarbytes() size_t
 pub fn crypto_core_ed25519_scalarbytes() size_t {
 	return C.crypto_core_ed25519_scalarbytes()
 }
+
+
+fn C.crypto_secretbox_keygen(byteptr)

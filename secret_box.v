@@ -12,13 +12,7 @@ mut:
 	key   [32]byte
 }
 
-fn C.crypto_secretbox_keygen(byteptr)
-
 pub fn new_secret_box(key string) SecretBox {
-	// println('KEY SIZE=')
-	// println(key_size)
-	// println('MAC SIZE')
-	// println(mac_size)
 	mut box := SecretBox{}
 	if key == '' {
 		// No key means a random one needs to be generated
@@ -29,29 +23,24 @@ pub fn new_secret_box(key string) SecretBox {
 		}
 	}
 	C.randombytes_buf(box.nonce, nonce_size)
-	/*
-	buf := [21]byte{}
-	res := C.crypto_secretbox_easy(buf, c'HELLO', 5, box.nonce, box.key)
-	for i in 0 .. 21 {
-		println(buf[i])
-	}
-	C.printf('res=%d sRES="%s"\n', res, buf)
-	decrypted := [5]byte{}
-	C.crypto_secretbox_open_easy(decrypted, buf, 21, box.nonce, box.key)
-	C.printf('DEC=%s\n', decrypted)
-	*/
 	return box
 }
 
 pub fn (box SecretBox) encrypt_string(s string) []byte {
 	buf := []byte{len: mac_size + s.len}
 	res := C.crypto_secretbox_easy(buf.data, s.str, s.len, box.nonce, box.key)
+	if res != 0 {
+		// TODO handle errors
+	}
 	return buf
 }
 
 pub fn (box SecretBox) encrypt(b []byte) []byte {
 	buf := []byte{len: mac_size + b.len}
 	res := C.crypto_secretbox_easy(buf.data, b.data, b.len, box.nonce, box.key)
+	if res != 0 {
+		// TODO handle errors
+	}
 	return buf
 }
 

@@ -32,3 +32,4 @@ fn test_secret_box() {
 	dec3 := box.decrypt(enc3)
 	assert dec3 == [byte(0), 1, 2, 3]
 }
+
