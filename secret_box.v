@@ -4,6 +4,8 @@ pub const (
 	key_size   = 32 // int(C.crypto_secretbox_KEYBYTES)
 	nonce_size = 24 // int(C.crypto_secretbox_NONCEBYTES)
 	mac_size   = 16 //  int(C.crypto_secretbox_MACBYTES)
+	public_key_size   = 32 //  int(C.crypto_secretbox_PUBLICKEYBYTES)
+	secret_key_size   = 32 //  int(C.crypto_secretbox_PUBLICKEYBYTES)
 )
 
 pub struct SecretBox {
