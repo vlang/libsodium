@@ -1,21 +1,20 @@
 module libsodium
 
-
 #include <sodium.h>
 #flag -lsodium
-
 const ( // empty enum
-	blake2b_blockbytes = 0
-	blake2b_outbytes = 1
-	blake2b_keybytes = 2
-	blake2b_saltbytes = 3
+	blake2b_blockbytes    = 0
+	blake2b_outbytes      = 1
+	blake2b_keybytes      = 2
+	blake2b_saltbytes     = 3
 	blake2b_personalbytes = 4
 )
 
+/*
 // struct decl name="blake2b_param_"
 // typedef struct
 // ['referenced', 'blake2b_param', 'struct blake2b_param_:struct blake2b_param_']
-struct blake2b_param { 
+struct blake2b_param {
 	digest_length byte
 	key_length byte
 	fanout byte
@@ -31,7 +30,7 @@ struct blake2b_param {
 // struct decl name="blake2b_state"
 // typedef struct
 // ['referenced', 'blake2b_state', 'struct blake2b_state:struct blake2b_state']
-struct blake2b_state { 
+struct blake2b_state {
 	h [8]u64
 	t [2]u64
 	f [2]u64
@@ -40,7 +39,7 @@ struct blake2b_state {
 	last_node byte
 }
 type blake2b_compress_fn = fn (&blake2b_state, & byte) int
-
+*/
 const ( // empty enum
 )
 
@@ -50,7 +49,6 @@ const ( // empty enum
 // struct decl name="blake2b_state"
 // typedef struct
 // ['referenced', 'blake2b_state', 'struct blake2b_state:struct blake2b_state']
-
 const ( // empty enum
 )
 
@@ -60,7 +58,6 @@ const ( // empty enum
 // struct decl name="blake2b_state"
 // typedef struct
 // ['referenced', 'blake2b_state', 'struct blake2b_state:struct blake2b_state']
-
 const ( // empty enum
 )
 
@@ -70,7 +67,6 @@ const ( // empty enum
 // struct decl name="blake2b_state"
 // typedef struct
 // ['referenced', 'blake2b_state', 'struct blake2b_state:struct blake2b_state']
-
 const ( // empty enum
 )
 
@@ -89,9 +85,9 @@ pub fn crypto_generichash_blake2b(out &byte, outlen size_t, in_ &byte, inlen u64
 fn C.crypto_generichash_blake2b_salt_personal(out &byte, outlen size_t, in_ &byte, inlen u64, key &byte, keylen size_t, salt &byte, personal &byte) int
 
 pub fn crypto_generichash_blake2b_salt_personal(out &byte, outlen size_t, in_ &byte, inlen u64, key &byte, keylen size_t, salt &byte, personal &byte) int {
-	return C.crypto_generichash_blake2b_salt_personal(out, outlen, in_, inlen, key, keylen, salt, personal)
+	return C.crypto_generichash_blake2b_salt_personal(out, outlen, in_, inlen, key, keylen,
+		salt, personal)
 }
-
 
 const ( // empty enum
 )
@@ -549,10 +545,11 @@ enum Argon2_ErrorCodes {
 	argon2_verify_mismatch
 }
 
+/*
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-struct argon2_context { 
+struct argon2_context {
 	out &byte
 	outlen u32
 	pwd &byte
@@ -569,34 +566,35 @@ struct argon2_context {
 	threads u32
 	flags u32
 }
+*/
 enum Argon2_type {
 	argon2_i
 	argon2_id
 }
 
-
 const ( // empty enum
-	argon2_version_number = 0
-	argon2_block_size = 1
-	argon2_qwords_in_block = 2
-	argon2_owords_in_block = 3
-	argon2_hwords_in_block = 4
+	argon2_version_number        = 0
+	argon2_block_size            = 1
+	argon2_qwords_in_block       = 2
+	argon2_owords_in_block       = 3
+	argon2_hwords_in_block       = 4
 	argon2_512bit_words_in_block = 5
-	argon2_addresses_in_block = 6
+	argon2_addresses_in_block    = 6
 	argon2_prehash_digest_length = 7
-	argon2_prehash_seed_length = 8
+	argon2_prehash_seed_length   = 8
 )
 
 // struct decl name="block_"
 // typedef struct
 // ['referenced', 'block', 'struct block_:struct block_']
-struct block { 
+/*
+struct block {
 	v [128]u64
 }
 // struct decl name="block_region_"
 // typedef struct
 // ['referenced', 'block_region', 'struct block_region_:struct block_region_']
-struct block_region { 
+struct block_region {
 	base voidptr
 	memory &block
 	size size_t
@@ -604,7 +602,7 @@ struct block_region {
 // struct decl name="Argon2_instance_t"
 // typedef struct
 // ['referenced', 'argon2_instance_t', 'struct Argon2_instance_t:struct Argon2_instance_t']
-struct argon2_instance_t { 
+struct argon2_instance_t {
 	region &block_region
 	pseudo_rands &u64
 	passes u32
@@ -620,7 +618,7 @@ struct argon2_instance_t {
 // struct decl name="Argon2_position_t"
 // typedef struct
 // ['referenced', 'argon2_position_t', 'struct Argon2_position_t:struct Argon2_position_t']
-struct argon2_position_t { 
+struct argon2_position_t {
 	pass u32
 	lane u32
 	slice byte
@@ -629,15 +627,15 @@ struct argon2_position_t {
 // struct decl name="Argon2_thread_data"
 // typedef struct
 // ['argon2_thread_data', 'struct Argon2_thread_data:struct Argon2_thread_data']
-struct argon2_thread_data { 
+struct argon2_thread_data {
 	instance_ptr &argon2_instance_t
 	pos argon2_position_t
 }
 type fill_segment_fn = fn (&argon2_instance_t, argon2_position_t)
+*/
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-
 const ( // empty enum
 )
 
@@ -659,7 +657,6 @@ const ( // empty enum
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-
 const ( // empty enum
 )
 
@@ -681,7 +678,6 @@ const ( // empty enum
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-
 const ( // empty enum
 )
 
@@ -703,7 +699,6 @@ const ( // empty enum
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-
 const ( // empty enum
 )
 
@@ -833,13 +828,13 @@ pub fn crypto_pwhash_argon2i_memlimit_sensitive() size_t {
 fn C.crypto_pwhash_argon2i(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t, alg int) int
 
 pub fn crypto_pwhash_argon2i(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t, alg int) int {
-	return C.crypto_pwhash_argon2i(out, outlen, passwd, passwdlen, salt, opslimit, memlimit, alg)
+	return C.crypto_pwhash_argon2i(out, outlen, passwd, passwdlen, salt, opslimit, memlimit,
+		alg)
 }
 
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-
 const ( // empty enum
 )
 
@@ -969,13 +964,13 @@ pub fn crypto_pwhash_argon2id_memlimit_sensitive() size_t {
 fn C.crypto_pwhash_argon2id(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t, alg int) int
 
 pub fn crypto_pwhash_argon2id(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t, alg int) int {
-	return C.crypto_pwhash_argon2id(out, outlen, passwd, passwdlen, salt, opslimit, memlimit, alg)
+	return C.crypto_pwhash_argon2id(out, outlen, passwd, passwdlen, salt, opslimit, memlimit,
+		alg)
 }
 
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-
 const ( // empty enum
 )
 
@@ -997,7 +992,6 @@ const ( // empty enum
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-
 const ( // empty enum
 )
 
@@ -1019,7 +1013,6 @@ const ( // empty enum
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-
 const ( // empty enum
 )
 
@@ -1041,20 +1034,23 @@ const ( // empty enum
 // struct decl name="struct"
 // typedef struct
 // ['referenced', 'escrypt_region_t', 'struct escrypt_region_t:escrypt_region_t']
-struct escrypt_region_t { 
+/*
+struct escrypt_region_t {
 	base voidptr
 	aligned voidptr
 	size size_t
 }
 type escrypt_local_t = escrypt_region_t
-type escrypt_kdf_t = fn (&escrypt_local_t, & byte, size_t, & byte, size_t, u64, u32, u32, & byte, size_t) int
+type escrypt_kdf_t = fn (&escrypt_local_t, &byte, size_t, &byte, size_t, u64, u32, u32, &byte, size_t) int
+*/
 // struct decl name="struct"
 // typedef struct
 // ['referenced', 'escrypt_region_t', 'struct escrypt_region_t:escrypt_region_t']
 fn C.crypto_pwhash_scryptsalsa208sha256_ll(passwd &byte, passwdlen size_t, salt &byte, saltlen size_t, N u64, r u32, p u32, buf &byte, buflen size_t) int
 
 pub fn crypto_pwhash_scryptsalsa208sha256_ll(passwd &byte, passwdlen size_t, salt &byte, saltlen size_t, N u64, r u32, p u32, buf &byte, buflen size_t) int {
-	return C.crypto_pwhash_scryptsalsa208sha256_ll(passwd, passwdlen, salt, saltlen, N, r, p, buf, buflen)
+	return C.crypto_pwhash_scryptsalsa208sha256_ll(passwd, passwdlen, salt, saltlen, N,
+		r, p, buf, buflen)
 }
 
 // struct decl name="struct"
@@ -1063,10 +1059,12 @@ pub fn crypto_pwhash_scryptsalsa208sha256_ll(passwd &byte, passwdlen size_t, sal
 // struct decl name="escrypt_block_t"
 // typedef struct
 // ['referenced', 'escrypt_block_t', 'union escrypt_block_t:union escrypt_block_t']
-struct escrypt_block_t { 
+/*
+struct escrypt_block_t {
 	w [16]u32
 	q [8]u64
 }
+*/
 // struct decl name="struct"
 // typedef struct
 // ['referenced', 'escrypt_region_t', 'struct escrypt_region_t:escrypt_region_t']
@@ -1163,7 +1161,8 @@ pub fn crypto_pwhash_scryptsalsa208sha256_memlimit_sensitive() size_t {
 fn C.crypto_pwhash_scryptsalsa208sha256(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t) int
 
 pub fn crypto_pwhash_scryptsalsa208sha256(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t) int {
-	return C.crypto_pwhash_scryptsalsa208sha256(out, outlen, passwd, passwdlen, salt, opslimit, memlimit)
+	return C.crypto_pwhash_scryptsalsa208sha256(out, outlen, passwd, passwdlen, salt,
+		opslimit, memlimit)
 }
 
 fn C.crypto_verify_16_bytes() size_t
@@ -1391,16 +1390,19 @@ pub fn crypto_scalarmult_ed25519_scalarbytes() size_t {
 // struct decl name="struct"
 // typedef struct
 // ['referenced', '_sodium_scalarmult_curve25519_sandy2x_fe51', 'struct _sodium_scalarmult_curve25519_sandy2x_fe51:_sodium_scalarmult_curve25519_sandy2x_fe51']
-struct _sodium_scalarmult_curve25519_sandy2x_fe51 { 
+/*
+struct _sodium_scalarmult_curve25519_sandy2x_fe51 {
 	v [5]u64
+
 }
 // struct decl name="crypto_scalarmult_curve25519_implementation"
 // typedef struct
 // ['referenced', 'crypto_scalarmult_curve25519_implementation', 'struct crypto_scalarmult_curve25519_implementation:struct crypto_scalarmult_curve25519_implementation']
-struct crypto_scalarmult_curve25519_implementation { 
+struct crypto_scalarmult_curve25519_implementation {
 	mult fn (byteptr, byteptr, byteptr) int
 	mult_base fn (byteptr, byteptr) int
 }
+*/
 fn C.crypto_scalarmult_curve25519(q &byte, n &byte, p &byte) int
 
 pub fn crypto_scalarmult_curve25519(q &byte, n &byte, p &byte) int {
@@ -1437,7 +1439,8 @@ pub fn crypto_onetimeauth_primitive() &char {
 // struct decl name="crypto_onetimeauth_poly1305_implementation"
 // typedef struct
 // ['crypto_onetimeauth_poly1305_implementation', 'struct crypto_onetimeauth_poly1305_implementation:struct crypto_onetimeauth_poly1305_implementation']
-struct crypto_onetimeauth_poly1305_implementation { 
+/*
+struct crypto_onetimeauth_poly1305_implementation {
 	onetimeauth fn (byteptr, byteptr, u64, byteptr) int
 	onetimeauth_verify fn (byteptr, byteptr, u64, byteptr) int
 	onetimeauth_init fn (&int, byteptr) int
@@ -1447,7 +1450,7 @@ struct crypto_onetimeauth_poly1305_implementation {
 // struct decl name="poly1305_state_internal_t"
 // typedef struct
 // ['referenced', 'poly1305_state_internal_t', 'struct poly1305_state_internal_t:struct poly1305_state_internal_t']
-struct poly1305_state_internal_t { 
+struct poly1305_state_internal_t {
 	r [5]u32
 	h [5]u32
 	pad [4]u32
@@ -1455,6 +1458,7 @@ struct poly1305_state_internal_t {
 	buffer [16]byte
 	final byte
 }
+*/
 // struct decl name="crypto_onetimeauth_poly1305_implementation"
 // typedef struct
 // ['crypto_onetimeauth_poly1305_implementation', 'struct crypto_onetimeauth_poly1305_implementation:struct crypto_onetimeauth_poly1305_implementation']
@@ -1494,31 +1498,34 @@ pub fn crypto_onetimeauth_poly1305_statebytes() size_t {
 // struct decl name="SysRandom_"
 // typedef struct
 // ['referenced', 'SysRandom', 'struct SysRandom_:struct SysRandom_']
-struct SysRandom { 
+struct SysRandom {
 	random_data_source_fd int
-	initialized int
-	getrandom_available int
+	initialized           int
+	getrandom_available   int
 }
+
 // struct decl name="InternalRandomGlobal_"
 // typedef struct
 // ['referenced', 'InternalRandomGlobal', 'struct InternalRandomGlobal_:struct InternalRandomGlobal_']
-struct InternalRandomGlobal { 
-	initialized int
+struct InternalRandomGlobal {
+	initialized           int
 	random_data_source_fd int
-	getentropy_available int
-	getrandom_available int
-	rdrand_available int
+	getentropy_available  int
+	getrandom_available   int
+	rdrand_available      int
 }
+
 // struct decl name="InternalRandom_"
 // typedef struct
 // ['referenced', 'InternalRandom', 'struct InternalRandom_:struct InternalRandom_']
-struct InternalRandom { 
-	initialized int
+struct InternalRandom {
+	initialized   int
 	rnd32_outleft size_t
-	key byte
-	rnd32 byte
-	nonce u64
+	key           byte
+	rnd32         byte
+	nonce         u64
 }
+
 fn C.randombytes_implementation_name() &char
 
 pub fn randombytes_implementation_name() &char {
@@ -1537,9 +1544,9 @@ pub fn randombytes_uniform(upper_bound u32) u32 {
 	return C.randombytes_uniform(upper_bound)
 }
 
-fn C.randombytes_buf(buf voidptr, size size_t) 
+fn C.randombytes_buf(buf voidptr, size size_t)
 
-pub fn randombytes_buf(buf voidptr, size size_t)  {
+pub fn randombytes_buf(buf voidptr, size size_t) {
 	C.randombytes_buf(buf, size)
 }
 
@@ -1555,9 +1562,9 @@ pub fn randombytes_close() int {
 	return C.randombytes_close()
 }
 
-fn C.randombytes(buf &byte, buf_len u64) 
+fn C.randombytes(buf &byte, buf_len u64)
 
-pub fn randombytes(buf &byte, buf_len u64)  {
+pub fn randombytes(buf &byte, buf_len u64) {
 	C.randombytes(buf, buf_len)
 }
 
@@ -1744,7 +1751,8 @@ pub fn crypto_box_curve25519xchacha20poly1305_beforenm(k &byte, pk &byte, sk &by
 fn C.crypto_box_curve25519xchacha20poly1305_detached_afternm(c &byte, mac &byte, m &byte, mlen u64, n &byte, k &byte) int
 
 pub fn crypto_box_curve25519xchacha20poly1305_detached_afternm(c &byte, mac &byte, m &byte, mlen u64, n &byte, k &byte) int {
-	return C.crypto_box_curve25519xchacha20poly1305_detached_afternm(c, mac, m, mlen, n, k)
+	return C.crypto_box_curve25519xchacha20poly1305_detached_afternm(c, mac, m, mlen,
+		n, k)
 }
 
 fn C.crypto_box_curve25519xchacha20poly1305_detached(c &byte, mac &byte, m &byte, mlen u64, n &byte, pk &byte, sk &byte) int
@@ -1768,13 +1776,15 @@ pub fn crypto_box_curve25519xchacha20poly1305_easy(c &byte, m &byte, mlen u64, n
 fn C.crypto_box_curve25519xchacha20poly1305_open_detached_afternm(m &byte, c &byte, mac &byte, clen u64, n &byte, k &byte) int
 
 pub fn crypto_box_curve25519xchacha20poly1305_open_detached_afternm(m &byte, c &byte, mac &byte, clen u64, n &byte, k &byte) int {
-	return C.crypto_box_curve25519xchacha20poly1305_open_detached_afternm(m, c, mac, clen, n, k)
+	return C.crypto_box_curve25519xchacha20poly1305_open_detached_afternm(m, c, mac, clen,
+		n, k)
 }
 
 fn C.crypto_box_curve25519xchacha20poly1305_open_detached(m &byte, c &byte, mac &byte, clen u64, n &byte, pk &byte, sk &byte) int
 
 pub fn crypto_box_curve25519xchacha20poly1305_open_detached(m &byte, c &byte, mac &byte, clen u64, n &byte, pk &byte, sk &byte) int {
-	return C.crypto_box_curve25519xchacha20poly1305_open_detached(m, c, mac, clen, n, pk, sk)
+	return C.crypto_box_curve25519xchacha20poly1305_open_detached(m, c, mac, clen, n,
+		pk, sk)
 }
 
 fn C.crypto_box_curve25519xchacha20poly1305_open_easy_afternm(m &byte, c &byte, clen u64, n &byte, k &byte) int
@@ -1924,27 +1934,29 @@ pub fn sodium_bin2base64(b64 &char, b64_maxlen size_t, bin &byte, bin_len size_t
 fn C.sodium_base642bin(bin &byte, bin_maxlen size_t, b64 &char, b64_len size_t, ignore &char, bin_len &size_t, b64_end &&char, variant int) int
 
 pub fn sodium_base642bin(bin &byte, bin_maxlen size_t, b64 &char, b64_len size_t, ignore &char, bin_len &size_t, b64_end &&char, variant int) int {
-	return C.sodium_base642bin(bin, bin_maxlen, b64, b64_len, ignore, bin_len, b64_end, variant)
+	return C.sodium_base642bin(bin, bin_maxlen, b64, b64_len, ignore, bin_len, b64_end,
+		variant)
 }
 
 // struct decl name="CPUFeatures_"
 // typedef struct
 // ['referenced', 'CPUFeatures', 'struct CPUFeatures_:struct CPUFeatures_']
-struct CPUFeatures { 
-	initialized int
-	has_neon int
+struct CPUFeatures {
+	initialized   int
+	has_neon      int
 	has_armcrypto int
-	has_sse2 int
-	has_sse3 int
-	has_ssse3 int
-	has_sse41 int
-	has_avx int
-	has_avx2 int
-	has_avx512f int
-	has_pclmul int
-	has_aesni int
-	has_rdrand int
+	has_sse2      int
+	has_sse3      int
+	has_ssse3     int
+	has_sse41     int
+	has_avx       int
+	has_avx2      int
+	has_avx512f   int
+	has_pclmul    int
+	has_aesni     int
+	has_rdrand    int
 }
+
 fn C.sodium_runtime_has_neon() int
 
 pub fn sodium_runtime_has_neon() int {
@@ -2017,9 +2029,9 @@ pub fn sodium_init() int {
 	return C.sodium_init()
 }
 
-fn C.sodium_misuse() 
+fn C.sodium_misuse()
 
-pub fn sodium_misuse()  {
+pub fn sodium_misuse() {
 	C.sodium_misuse()
 }
 
@@ -2029,15 +2041,15 @@ pub fn sodium_set_misuse_handler(handler fn ()) int {
 	return C.sodium_set_misuse_handler(handler)
 }
 
-fn C.sodium_memzero(pnt voidptr, len size_t) 
+fn C.sodium_memzero(pnt voidptr, len size_t)
 
-pub fn sodium_memzero(pnt voidptr, len size_t)  {
+pub fn sodium_memzero(pnt voidptr, len size_t) {
 	C.sodium_memzero(pnt, len)
 }
 
-fn C.sodium_stackzero(len size_t) 
+fn C.sodium_stackzero(len size_t)
 
-pub fn sodium_stackzero(len size_t)  {
+pub fn sodium_stackzero(len size_t) {
 	C.sodium_stackzero(len)
 }
 
@@ -2059,21 +2071,21 @@ pub fn sodium_is_zero(n &byte, nlen size_t) int {
 	return C.sodium_is_zero(n, nlen)
 }
 
-fn C.sodium_increment(n &byte, nlen size_t) 
+fn C.sodium_increment(n &byte, nlen size_t)
 
-pub fn sodium_increment(n &byte, nlen size_t)  {
+pub fn sodium_increment(n &byte, nlen size_t) {
 	C.sodium_increment(n, nlen)
 }
 
-fn C.sodium_add(a &byte, b &byte, len size_t) 
+fn C.sodium_add(a &byte, b &byte, len size_t)
 
-pub fn sodium_add(a &byte, b &byte, len size_t)  {
+pub fn sodium_add(a &byte, b &byte, len size_t) {
 	C.sodium_add(a, b, len)
 }
 
-fn C.sodium_sub(a &byte, b &byte, len size_t) 
+fn C.sodium_sub(a &byte, b &byte, len size_t)
 
-pub fn sodium_sub(a &byte, b &byte, len size_t)  {
+pub fn sodium_sub(a &byte, b &byte, len size_t) {
 	C.sodium_sub(a, b, len)
 }
 
@@ -2101,9 +2113,9 @@ pub fn sodium_allocarray(count size_t, size size_t) voidptr {
 	return C.sodium_allocarray(count, size)
 }
 
-fn C.sodium_free(ptr voidptr) 
+fn C.sodium_free(ptr voidptr)
 
-pub fn sodium_free(ptr voidptr)  {
+pub fn sodium_free(ptr voidptr) {
 	C.sodium_free(ptr)
 }
 
@@ -2200,7 +2212,8 @@ pub fn crypto_stream_xchacha20_xor(c &byte, m &byte, mlen u64, n &byte, k &byte)
 // struct decl name="crypto_stream_chacha20_implementation"
 // typedef struct
 // ['crypto_stream_chacha20_implementation', 'struct crypto_stream_chacha20_implementation:struct crypto_stream_chacha20_implementation']
-struct crypto_stream_chacha20_implementation { 
+/*
+struct crypto_stream_chacha20_implementation {
 	stream fn (byteptr, u64, byteptr, byteptr) int
 	stream_ietf_ext fn (byteptr, u64, byteptr, byteptr) int
 	stream_xor_ic fn (byteptr, byteptr, u64, byteptr, u64, byteptr) int
@@ -2209,9 +2222,10 @@ struct crypto_stream_chacha20_implementation {
 // struct decl name="chacha_ctx"
 // typedef struct
 // ['referenced', 'chacha_ctx', 'struct chacha_ctx:struct chacha_ctx']
-struct chacha_ctx { 
+struct chacha_ctx {
 	input [16]u32
 }
+*/
 // struct decl name="crypto_stream_chacha20_implementation"
 // typedef struct
 // ['referenced', 'crypto_stream_chacha20_implementation', 'struct crypto_stream_chacha20_implementation:struct crypto_stream_chacha20_implementation']
@@ -2254,10 +2268,12 @@ pub fn crypto_stream_chacha20_ietf_xor(c &byte, m &byte, mlen u64, n &byte, k &b
 // struct decl name="crypto_stream_salsa20_implementation"
 // typedef struct
 // ['crypto_stream_salsa20_implementation', 'struct crypto_stream_salsa20_implementation:struct crypto_stream_salsa20_implementation']
-struct crypto_stream_salsa20_implementation { 
+/*
+struct crypto_stream_salsa20_implementation {
 	stream fn (byteptr, u64, byteptr, byteptr) int
 	stream_xor_ic fn (byteptr, byteptr, u64, byteptr, u64, byteptr) int
 }
+*/
 // struct decl name="crypto_stream_salsa20_implementation"
 // typedef struct
 // ['referenced', 'crypto_stream_salsa20_implementation', 'struct crypto_stream_salsa20_implementation:struct crypto_stream_salsa20_implementation']
@@ -2363,25 +2379,29 @@ pub fn crypto_hash_primitive() &char {
 fn C.crypto_aead_xchacha20poly1305_ietf_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_xchacha20poly1305_ietf_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_xchacha20poly1305_ietf_encrypt_detached(c, mac, maclen_p, m, mlen, ad, adlen, nsec, npub, k)
+	return C.crypto_aead_xchacha20poly1305_ietf_encrypt_detached(c, mac, maclen_p, m,
+		mlen, ad, adlen, nsec, npub, k)
 }
 
 fn C.crypto_aead_xchacha20poly1305_ietf_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_xchacha20poly1305_ietf_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_xchacha20poly1305_ietf_encrypt(c, clen_p, m, mlen, ad, adlen, nsec, npub, k)
+	return C.crypto_aead_xchacha20poly1305_ietf_encrypt(c, clen_p, m, mlen, ad, adlen,
+		nsec, npub, k)
 }
 
 fn C.crypto_aead_xchacha20poly1305_ietf_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_xchacha20poly1305_ietf_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_xchacha20poly1305_ietf_decrypt_detached(m, nsec, c, clen, mac, ad, adlen, npub, k)
+	return C.crypto_aead_xchacha20poly1305_ietf_decrypt_detached(m, nsec, c, clen, mac,
+		ad, adlen, npub, k)
 }
 
 fn C.crypto_aead_xchacha20poly1305_ietf_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_xchacha20poly1305_ietf_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_xchacha20poly1305_ietf_decrypt(m, mlen_p, nsec, c, clen, ad, adlen, npub, k)
+	return C.crypto_aead_xchacha20poly1305_ietf_decrypt(m, mlen_p, nsec, c, clen, ad,
+		adlen, npub, k)
 }
 
 fn C.crypto_aead_xchacha20poly1305_ietf_keybytes() size_t
@@ -2417,25 +2437,29 @@ pub fn crypto_aead_xchacha20poly1305_ietf_messagebytes_max() size_t {
 fn C.crypto_aead_aes256gcm_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_aes256gcm_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_aes256gcm_encrypt_detached(c, mac, maclen_p, m, mlen, ad, adlen, nsec, npub, k)
+	return C.crypto_aead_aes256gcm_encrypt_detached(c, mac, maclen_p, m, mlen, ad, adlen,
+		nsec, npub, k)
 }
 
 fn C.crypto_aead_aes256gcm_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_aes256gcm_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_aes256gcm_encrypt(c, clen_p, m, mlen, ad, adlen, nsec, npub, k)
+	return C.crypto_aead_aes256gcm_encrypt(c, clen_p, m, mlen, ad, adlen, nsec, npub,
+		k)
 }
 
 fn C.crypto_aead_aes256gcm_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_aes256gcm_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_aes256gcm_decrypt_detached(m, nsec, c, clen, mac, ad, adlen, npub, k)
+	return C.crypto_aead_aes256gcm_decrypt_detached(m, nsec, c, clen, mac, ad, adlen,
+		npub, k)
 }
 
 fn C.crypto_aead_aes256gcm_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_aes256gcm_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_aes256gcm_decrypt(m, mlen_p, nsec, c, clen, ad, adlen, npub, k)
+	return C.crypto_aead_aes256gcm_decrypt(m, mlen_p, nsec, c, clen, ad, adlen, npub,
+		k)
 }
 
 fn C.crypto_aead_aes256gcm_is_available() int
@@ -2483,49 +2507,57 @@ pub fn crypto_aead_aes256gcm_messagebytes_max() size_t {
 fn C.crypto_aead_chacha20poly1305_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_encrypt_detached(c, mac, maclen_p, m, mlen, ad, adlen, nsec, npub, k)
+	return C.crypto_aead_chacha20poly1305_encrypt_detached(c, mac, maclen_p, m, mlen,
+		ad, adlen, nsec, npub, k)
 }
 
 fn C.crypto_aead_chacha20poly1305_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_encrypt(c, clen_p, m, mlen, ad, adlen, nsec, npub, k)
+	return C.crypto_aead_chacha20poly1305_encrypt(c, clen_p, m, mlen, ad, adlen, nsec,
+		npub, k)
 }
 
 fn C.crypto_aead_chacha20poly1305_ietf_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_ietf_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_ietf_encrypt_detached(c, mac, maclen_p, m, mlen, ad, adlen, nsec, npub, k)
+	return C.crypto_aead_chacha20poly1305_ietf_encrypt_detached(c, mac, maclen_p, m, mlen,
+		ad, adlen, nsec, npub, k)
 }
 
 fn C.crypto_aead_chacha20poly1305_ietf_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_ietf_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_ietf_encrypt(c, clen_p, m, mlen, ad, adlen, nsec, npub, k)
+	return C.crypto_aead_chacha20poly1305_ietf_encrypt(c, clen_p, m, mlen, ad, adlen,
+		nsec, npub, k)
 }
 
 fn C.crypto_aead_chacha20poly1305_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_decrypt_detached(m, nsec, c, clen, mac, ad, adlen, npub, k)
+	return C.crypto_aead_chacha20poly1305_decrypt_detached(m, nsec, c, clen, mac, ad,
+		adlen, npub, k)
 }
 
 fn C.crypto_aead_chacha20poly1305_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_decrypt(m, mlen_p, nsec, c, clen, ad, adlen, npub, k)
+	return C.crypto_aead_chacha20poly1305_decrypt(m, mlen_p, nsec, c, clen, ad, adlen,
+		npub, k)
 }
 
 fn C.crypto_aead_chacha20poly1305_ietf_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_ietf_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_ietf_decrypt_detached(m, nsec, c, clen, mac, ad, adlen, npub, k)
+	return C.crypto_aead_chacha20poly1305_ietf_decrypt_detached(m, nsec, c, clen, mac,
+		ad, adlen, npub, k)
 }
 
 fn C.crypto_aead_chacha20poly1305_ietf_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_ietf_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_ietf_decrypt(m, mlen_p, nsec, c, clen, ad, adlen, npub, k)
+	return C.crypto_aead_chacha20poly1305_ietf_decrypt(m, mlen_p, nsec, c, clen, ad, adlen,
+		npub, k)
 }
 
 fn C.crypto_aead_chacha20poly1305_ietf_keybytes() size_t
@@ -2792,9 +2824,9 @@ pub fn crypto_core_ed25519_from_uniform(p &byte, r &byte) int {
 	return C.crypto_core_ed25519_from_uniform(p, r)
 }
 
-fn C.crypto_core_ed25519_scalar_random(r &byte) 
+fn C.crypto_core_ed25519_scalar_random(r &byte)
 
-pub fn crypto_core_ed25519_scalar_random(r &byte)  {
+pub fn crypto_core_ed25519_scalar_random(r &byte) {
 	C.crypto_core_ed25519_scalar_random(r)
 }
 
@@ -2804,27 +2836,27 @@ pub fn crypto_core_ed25519_scalar_invert(recip &byte, s &byte) int {
 	return C.crypto_core_ed25519_scalar_invert(recip, s)
 }
 
-fn C.crypto_core_ed25519_scalar_negate(neg &byte, s &byte) 
+fn C.crypto_core_ed25519_scalar_negate(neg &byte, s &byte)
 
-pub fn crypto_core_ed25519_scalar_negate(neg &byte, s &byte)  {
+pub fn crypto_core_ed25519_scalar_negate(neg &byte, s &byte) {
 	C.crypto_core_ed25519_scalar_negate(neg, s)
 }
 
-fn C.crypto_core_ed25519_scalar_complement(comp &byte, s &byte) 
+fn C.crypto_core_ed25519_scalar_complement(comp &byte, s &byte)
 
-pub fn crypto_core_ed25519_scalar_complement(comp &byte, s &byte)  {
+pub fn crypto_core_ed25519_scalar_complement(comp &byte, s &byte) {
 	C.crypto_core_ed25519_scalar_complement(comp, s)
 }
 
-fn C.crypto_core_ed25519_scalar_add(z &byte, x &byte, y &byte) 
+fn C.crypto_core_ed25519_scalar_add(z &byte, x &byte, y &byte)
 
-pub fn crypto_core_ed25519_scalar_add(z &byte, x &byte, y &byte)  {
+pub fn crypto_core_ed25519_scalar_add(z &byte, x &byte, y &byte) {
 	C.crypto_core_ed25519_scalar_add(z, x, y)
 }
 
-fn C.crypto_core_ed25519_scalar_sub(z &byte, x &byte, y &byte) 
+fn C.crypto_core_ed25519_scalar_sub(z &byte, x &byte, y &byte)
 
-pub fn crypto_core_ed25519_scalar_sub(z &byte, x &byte, y &byte)  {
+pub fn crypto_core_ed25519_scalar_sub(z &byte, x &byte, y &byte) {
 	C.crypto_core_ed25519_scalar_sub(z, x, y)
 }
 
@@ -2851,4 +2883,3 @@ fn C.crypto_core_ed25519_scalarbytes() size_t
 pub fn crypto_core_ed25519_scalarbytes() size_t {
 	return C.crypto_core_ed25519_scalarbytes()
 }
-
