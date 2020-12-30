@@ -7,8 +7,9 @@ pub const (
 )
 
 pub struct SecretBox {
-	key   [32]byte
 	nonce [24]byte
+mut:
+	key   [32]byte
 }
 
 fn C.crypto_secretbox_keygen(byteptr)
@@ -18,8 +19,15 @@ pub fn new_secret_box(key string) SecretBox {
 	// println(key_size)
 	// println('MAC SIZE')
 	// println(mac_size)
-	box := SecretBox{}
-	C.crypto_secretbox_keygen(box.key)
+	mut box := SecretBox{}
+	if key == '' {
+		// No key means a random one needs to be generated
+		C.crypto_secretbox_keygen(box.key)
+	} else {
+		for i := 0; i < key_size && i < key.len; i++ {
+			box.key[i] = key[i]
+		}
+	}
 	C.randombytes_buf(box.nonce, nonce_size)
 	/*
 	buf := [21]byte{}
