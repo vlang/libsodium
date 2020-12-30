@@ -27,11 +27,11 @@ decrypted_bytes := box.decrypt(encrypted_bytes)
 assert decrypted_bytes == [byte(0), 1, 2, 3]
 
 // Public-key cryptography
-key_alice := new_private_key()
-key_bob := new_private_key()
-bob_box := new_box(key_bob, key_alice.public_key)
+key_alice := libsodium.new_private_key()
+key_bob := libsodium.new_private_key()
+bob_box := libsodium.new_box(key_bob, key_alice.public_key)
 encrypted := bob_box.encrypt_string('hello')
-alice_box := new_box(key_alice, key_bob.public_key)
+alice_box := libsodium.new_box(key_alice, key_bob.public_key)
 decrypted := alice_box.decrypt_string(encrypted)
 println(decrypted)
 assert decrypted == 'hello'
