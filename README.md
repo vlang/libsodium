@@ -37,3 +37,17 @@ println(decrypted)
 assert decrypted == 'hello'
 
 ```
+
+## performance test
+
+v run libsodium_test.v
+
+```bash
+2568688128
+hello
+hello
+nr of ms for 1million iterations: 820 for test symmetric encryption
+nr iterations per sec for symmetric encryption: 1219000
+nr of ms for 10thousand iterations: 1413 for test asymm encryption
+nr iterations per sec for asymm encryption: 7000
+```
