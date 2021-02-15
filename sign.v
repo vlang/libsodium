@@ -5,16 +5,16 @@ const (
 )
 
 struct SigningKey {
-	secret_key [32]byte
+	secret_key [secret_key_size]byte
 pub:
 	verify_key VerifyKey
 }
 
 struct VerifyKey {
-	public_key [32]byte
+	public_key [public_key_size]byte
 }
 
-pub fn new_signing_key(public_key [32]byte, secret_key [32]byte) SigningKey {
+pub fn new_signing_key(public_key [public_key_size]byte, secret_key [secret_key_size]byte) SigningKey {
 	res := SigningKey{
 		verify_key: {
 			public_key: public_key
