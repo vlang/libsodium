@@ -6,6 +6,7 @@ const (
 
 struct SigningKey {
 	secret_key [32]byte
+pub:
 	verify_key VerifyKey
 }
 
@@ -13,7 +14,18 @@ struct VerifyKey {
 	public_key [32]byte
 }
 
-pub fn new_signinig_key() SigningKey {
+pub fn new_signing_key(public_key [32]byte, secret_key [32]byte) SigningKey {
+	res := SigningKey{
+		verify_key: {
+			public_key: public_key
+		}
+		secret_key: secret_key
+	}
+	//res.secret_key = secret_key
+	return res
+}
+
+pub fn generate_signing_key() SigningKey {
 	res := SigningKey{}
 	C.crypto_sign_keypair(res.verify_key.public_key, res.secret_key)
 	return res
