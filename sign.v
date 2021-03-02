@@ -42,10 +42,11 @@ pub fn (key VerifyKey) verify_string(s string) bool {
 }
 
 pub fn (key SigningKey) sign_string(s string) string {
-	buf := []byte{len: sign_len + s.len}
+	buf_size := sign_len + s.len
+	mut buf := unsafe { vcalloc(buf_size) }
 	mut buf_len := 0
-	C.crypto_sign(buf.data, &buf_len, s.str, s.len, key.secret_key)
-	return string(buf)
+	C.crypto_sign(buf, &buf_len, s.str, s.len, key.secret_key)
+	return unsafe { buf.vstring_with_len(buf_len) }
 }
 
 pub fn (key VerifyKey) verify(b []byte) bool {

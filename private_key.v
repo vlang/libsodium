@@ -60,8 +60,8 @@ pub fn (box Box) decrypt(b []byte) []byte {
 
 pub fn (box Box) decrypt_string(b []byte) string {
 	len := b.len - mac_size
-	decrypted := []byte{len: len}
-	C.crypto_box_open_easy(decrypted.data, b.data, b.len, box.nonce, box.public_key.data,
+	decrypted := unsafe { vcalloc(len) }
+	C.crypto_box_open_easy(decrypted, b.data, b.len, box.nonce, box.public_key.data,
 		box.key.secret_key.data)
-	return string(decrypted)
+	return unsafe { decrypted.vstring_with_len(len) }
 }

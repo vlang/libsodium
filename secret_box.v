@@ -55,7 +55,7 @@ pub fn (box SecretBox) decrypt(b []byte) []byte {
 
 pub fn (box SecretBox) decrypt_string(b []byte) string {
 	len := b.len - mac_size
-	decrypted := []byte{len: len}
-	C.crypto_secretbox_open_easy(decrypted.data, b.data, b.len, box.nonce, box.key)
-	return string(decrypted)
+	decrypted := unsafe { vcalloc(len) }
+	C.crypto_secretbox_open_easy(decrypted, b.data, b.len, box.nonce, box.key)
+	return unsafe { decrypted.vstring_with_len(len) }
 }
