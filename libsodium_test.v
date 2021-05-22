@@ -43,4 +43,3 @@ fn test_private_key() {
 	println(decrypted)
 	assert decrypted == 'hello'
 }
-

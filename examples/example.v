@@ -60,7 +60,7 @@ fn perftest2() {
 	sw.start()
 	for _ in 0 .. nr {
 		bob_box := libsodium.new_box(key_bob, key_alice.public_key)
-		alice_box := libsodium.new_box(key_alice, key_bob.public_key)		
+		alice_box := libsodium.new_box(key_alice, key_bob.public_key)
 		encrypted := bob_box.encrypt_string(data)
 		alice_box.decrypt_string(encrypted)
 	}

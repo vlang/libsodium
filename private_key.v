@@ -1,14 +1,14 @@
 module libsodium
 
 pub struct Box {
-	nonce      [24]byte
+	nonce [24]byte
 mut:
 	key        PrivateKey
 	public_key []byte
 }
 
 pub struct PrivateKey {
-	nonce      [24]byte
+	nonce [24]byte
 pub:
 	public_key []byte
 	secret_key []byte
@@ -33,7 +33,8 @@ pub fn new_box(private_key PrivateKey, public_key []byte) Box {
 
 pub fn (box Box) encrypt_string(s string) []byte {
 	buf := []byte{len: mac_size + s.len}
-	res := C.crypto_box_easy(buf.data, s.str, s.len, &box.nonce[0], box.public_key.data, box.key.secret_key.data)
+	res := C.crypto_box_easy(buf.data, s.str, s.len, &box.nonce[0], box.public_key.data,
+		box.key.secret_key.data)
 	if res != 0 {
 		// TODO handle errors
 	}

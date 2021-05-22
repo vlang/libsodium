@@ -2,6 +2,7 @@ module libsodium
 
 #include <sodium.h>
 #flag -lsodium
+
 const ( // empty enum
 	blake2b_blockbytes    = 0
 	blake2b_outbytes      = 1
@@ -41,7 +42,6 @@ struct blake2b_state {
 type blake2b_compress_fn = fn (&blake2b_state, & byte) int
 */
 
-
 // struct decl name="blake2b_param_"
 // typedef struct
 // ['referenced', 'blake2b_param', 'struct blake2b_param_:struct blake2b_param_']
@@ -49,14 +49,12 @@ type blake2b_compress_fn = fn (&blake2b_state, & byte) int
 // typedef struct
 // ['referenced', 'blake2b_state', 'struct blake2b_state:struct blake2b_state']
 
-
 // struct decl name="blake2b_param_"
 // typedef struct
 // ['referenced', 'blake2b_param', 'struct blake2b_param_:struct blake2b_param_']
 // struct decl name="blake2b_state"
 // typedef struct
 // ['referenced', 'blake2b_state', 'struct blake2b_state:struct blake2b_state']
-
 
 // struct decl name="blake2b_param_"
 // typedef struct
@@ -83,7 +81,6 @@ pub fn crypto_generichash_blake2b_salt_personal(out &byte, outlen size_t, in_ &b
 	return C.crypto_generichash_blake2b_salt_personal(out, outlen, in_, inlen, key, keylen,
 		salt, personal)
 }
-
 
 // struct decl name="blake2b_param_"
 // typedef struct
@@ -2861,5 +2858,4 @@ pub fn crypto_core_ed25519_scalarbytes() size_t {
 	return C.crypto_core_ed25519_scalarbytes()
 }
 
-
-fn C.crypto_secretbox_keygen(byteptr)
+fn C.crypto_secretbox_keygen(&byte)
