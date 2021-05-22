@@ -40,8 +40,7 @@ struct blake2b_state {
 }
 type blake2b_compress_fn = fn (&blake2b_state, & byte) int
 */
-const ( // empty enum
-)
+
 
 // struct decl name="blake2b_param_"
 // typedef struct
@@ -49,8 +48,7 @@ const ( // empty enum
 // struct decl name="blake2b_state"
 // typedef struct
 // ['referenced', 'blake2b_state', 'struct blake2b_state:struct blake2b_state']
-const ( // empty enum
-)
+
 
 // struct decl name="blake2b_param_"
 // typedef struct
@@ -58,8 +56,7 @@ const ( // empty enum
 // struct decl name="blake2b_state"
 // typedef struct
 // ['referenced', 'blake2b_state', 'struct blake2b_state:struct blake2b_state']
-const ( // empty enum
-)
+
 
 // struct decl name="blake2b_param_"
 // typedef struct
@@ -67,8 +64,6 @@ const ( // empty enum
 // struct decl name="blake2b_state"
 // typedef struct
 // ['referenced', 'blake2b_state', 'struct blake2b_state:struct blake2b_state']
-const ( // empty enum
-)
 
 // struct decl name="blake2b_param_"
 // typedef struct
@@ -89,8 +84,6 @@ pub fn crypto_generichash_blake2b_salt_personal(out &byte, outlen size_t, in_ &b
 		salt, personal)
 }
 
-const ( // empty enum
-)
 
 // struct decl name="blake2b_param_"
 // typedef struct
@@ -636,8 +629,6 @@ type fill_segment_fn = fn (&argon2_instance_t, argon2_position_t)
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-const ( // empty enum
-)
 
 // struct decl name="block_"
 // typedef struct
@@ -657,8 +648,6 @@ const ( // empty enum
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-const ( // empty enum
-)
 
 // struct decl name="block_"
 // typedef struct
@@ -678,8 +667,6 @@ const ( // empty enum
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-const ( // empty enum
-)
 
 // struct decl name="block_"
 // typedef struct
@@ -699,8 +686,6 @@ const ( // empty enum
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-const ( // empty enum
-)
 
 // struct decl name="block_"
 // typedef struct
@@ -835,8 +820,6 @@ pub fn crypto_pwhash_argon2i(out &byte, outlen u64, passwd &char, passwdlen u64,
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-const ( // empty enum
-)
 
 // struct decl name="block_"
 // typedef struct
@@ -971,8 +954,6 @@ pub fn crypto_pwhash_argon2id(out &byte, outlen u64, passwd &char, passwdlen u64
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-const ( // empty enum
-)
 
 // struct decl name="block_"
 // typedef struct
@@ -992,8 +973,6 @@ const ( // empty enum
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-const ( // empty enum
-)
 
 // struct decl name="block_"
 // typedef struct
@@ -1013,8 +992,6 @@ const ( // empty enum
 // struct decl name="Argon2_Context"
 // typedef struct
 // ['referenced', 'argon2_context', 'struct Argon2_Context:struct Argon2_Context']
-const ( // empty enum
-)
 
 // struct decl name="block_"
 // typedef struct
