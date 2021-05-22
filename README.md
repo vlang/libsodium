@@ -15,7 +15,7 @@ import libsodium
 // Random numbers generation
 println(libsodium.randombytes_random())
 
-// Secret-key cryptography
+// Secret-key cryptography:
 box := libsodium.new_secret_box('key')
 encrypted := box.encrypt_string('hello')
 decrypted := box.decrypt_string(encrypted)
@@ -26,19 +26,21 @@ encrypted_bytes := box.encrypt([byte(0), 1, 2, 3])
 decrypted_bytes := box.decrypt(encrypted_bytes)
 assert decrypted_bytes == [byte(0), 1, 2, 3]
 
-// Public-key cryptography
+// Public-key cryptography:
 key_alice := libsodium.new_private_key()
 key_bob := libsodium.new_private_key()
-bob_box := libsodium.new_box(key_bob, key_alice.public_key)
-encrypted := bob_box.encrypt_string('hello')
-alice_box := libsodium.new_box(key_alice, key_bob.public_key)
-decrypted := alice_box.decrypt_string(encrypted)
-println(decrypted)
-assert decrypted == 'hello'
 
+alice_box := libsodium.new_box(key_alice, key_bob.public_key)
+bob_box := libsodium.new_box(key_bob, key_alice.public_key)
+
+pkey_encrypted := bob_box.encrypt_string('hello')
+pkey_decrypted := alice_box.decrypt_string(pkey_encrypted)
+
+println(pkey_decrypted)
+assert pkey_decrypted == 'hello'
 ```
 
-## performance test
+## performance test:
 
 v run libsodium_test.v
 
