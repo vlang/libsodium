@@ -1,5 +1,8 @@
 module libsodium
 
+#flag darwin -L/opt/homebrew/lib
+#flag darwin -I/opt/homebrew/include
+
 #include <sodium.h>
 #flag -lsodium
 
