@@ -49,13 +49,19 @@ pub fn (box SecretBox) encrypt(b []byte) []byte {
 pub fn (box SecretBox) decrypt(b []byte) []byte {
 	len := b.len - libsodium.mac_size
 	decrypted := []byte{len: len}
-	C.crypto_secretbox_open_easy(decrypted.data, b.data, b.len, &box.nonce[0], &box.key[0])
+	x := C.crypto_secretbox_open_easy(decrypted.data, b.data, b.len, &box.nonce[0], &box.key[0])
+	if x != 0 {
+		// TODO handle errors
+	}
 	return decrypted
 }
 
 pub fn (box SecretBox) decrypt_string(b []byte) string {
 	len := b.len - libsodium.mac_size
 	decrypted := unsafe { vcalloc(len) }
-	C.crypto_secretbox_open_easy(decrypted, b.data, b.len, &box.nonce[0], &box.key[0])
+	x := C.crypto_secretbox_open_easy(decrypted, b.data, b.len, &box.nonce[0], &box.key[0])
+	if x != 0 {
+		// TODO handle errors
+	}
 	return unsafe { decrypted.vstring_with_len(len) }
 }

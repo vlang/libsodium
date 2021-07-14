@@ -19,7 +19,10 @@ pub fn new_private_key() PrivateKey {
 		public_key: []byte{len: public_key_size}
 		secret_key: []byte{len: secret_key_size}
 	}
-	C.crypto_box_keypair(pk.public_key.data, pk.secret_key.data)
+	x := C.crypto_box_keypair(pk.public_key.data, pk.secret_key.data)
+	if x != 0 {
+		// TODO handle errors
+	}
 	return pk
 }
 
@@ -54,15 +57,21 @@ pub fn (box Box) encrypt(b []byte) []byte {
 pub fn (box Box) decrypt(b []byte) []byte {
 	len := b.len - mac_size
 	decrypted := []byte{len: len}
-	C.crypto_box_open_easy(decrypted.data, b.data, b.len, &box.nonce[0], box.public_key.data,
+	x := C.crypto_box_open_easy(decrypted.data, b.data, b.len, &box.nonce[0], box.public_key.data,
 		box.key.secret_key.data)
+	if x != 0 {
+		// TODO handle errors
+	}
 	return decrypted
 }
 
 pub fn (box Box) decrypt_string(b []byte) string {
 	len := b.len - mac_size
 	decrypted := unsafe { vcalloc(len) }
-	C.crypto_box_open_easy(decrypted, b.data, b.len, &box.nonce[0], box.public_key.data,
+	x := C.crypto_box_open_easy(decrypted, b.data, b.len, &box.nonce[0], box.public_key.data,
 		box.key.secret_key.data)
+	if x != 0 {
+		// TODO handle errors
+	}
 	return unsafe { decrypted.vstring_with_len(len) }
 }

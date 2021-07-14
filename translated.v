@@ -6,6 +6,11 @@ module libsodium
 #include <sodium.h>
 #flag -lsodium
 
+#define UNSIGNED_LONG_LONG unsigned long long
+#define ULLCAST(x) (UNSIGNED_LONG_LONG *)(x)
+
+fn C.ULLCAST(x &u64) &C.UNSIGNED_LONG_LONG
+
 const ( // empty enum
 	blake2b_blockbytes    = 0
 	blake2b_outbytes      = 1
@@ -94,7 +99,7 @@ pub fn crypto_generichash_blake2b_salt_personal(out &byte, outlen size_t, in_ &b
 fn C.crypto_generichash_primitive() &char
 
 pub fn crypto_generichash_primitive() &char {
-	return C.crypto_generichash_primitive()
+	return &char(C.crypto_generichash_primitive())
 }
 
 fn C.crypto_kx_publickeybytes() size_t
@@ -124,13 +129,13 @@ pub fn crypto_kx_sessionkeybytes() size_t {
 fn C.crypto_kx_primitive() &char
 
 pub fn crypto_kx_primitive() &char {
-	return C.crypto_kx_primitive()
+	return &char(C.crypto_kx_primitive())
 }
 
 fn C.crypto_sign_primitive() &char
 
 pub fn crypto_sign_primitive() &char {
-	return C.crypto_sign_primitive()
+	return &char(C.crypto_sign_primitive())
 }
 
 fn C.crypto_sign_seed_keypair(pk &byte, sk &byte, seed &byte) int
@@ -145,22 +150,22 @@ pub fn crypto_sign_keypair(pk &byte, sk &byte) int {
 	return C.crypto_sign_keypair(pk, sk)
 }
 
-fn C.crypto_sign(sm &byte, smlen_p &u64, m &byte, mlen u64, sk &byte) int
+fn C.crypto_sign(sm &byte, smlen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, sk &byte) int
 
 pub fn crypto_sign(sm &byte, smlen_p &u64, m &byte, mlen u64, sk &byte) int {
-	return C.crypto_sign(sm, smlen_p, m, mlen, sk)
+	return C.crypto_sign(sm, C.ULLCAST(smlen_p), m, mlen, sk)
 }
 
-fn C.crypto_sign_open(m &byte, mlen_p &u64, sm &byte, smlen u64, pk &byte) int
+fn C.crypto_sign_open(m &byte, mlen_p &C.UNSIGNED_LONG_LONG, sm &byte, smlen u64, pk &byte) int
 
 pub fn crypto_sign_open(m &byte, mlen_p &u64, sm &byte, smlen u64, pk &byte) int {
-	return C.crypto_sign_open(m, mlen_p, sm, smlen, pk)
+	return C.crypto_sign_open(m, C.ULLCAST(mlen_p), sm, smlen, pk)
 }
 
-fn C.crypto_sign_detached(sig &byte, siglen_p &u64, m &byte, mlen u64, sk &byte) int
+fn C.crypto_sign_detached(sig &byte, siglen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, sk &byte) int
 
 pub fn crypto_sign_detached(sig &byte, siglen_p &u64, m &byte, mlen u64, sk &byte) int {
-	return C.crypto_sign_detached(sig, siglen_p, m, mlen, sk)
+	return C.crypto_sign_detached(sig, C.ULLCAST(siglen_p), m, mlen, sk)
 }
 
 fn C.crypto_sign_verify_detached(sig &byte, m &byte, mlen u64, pk &byte) int
@@ -217,16 +222,16 @@ pub fn crypto_sign_ed25519_sk_to_pk(pk &byte, sk &byte) int {
 	return C.crypto_sign_ed25519_sk_to_pk(pk, sk)
 }
 
-fn C.crypto_sign_ed25519_detached(sig &byte, siglen_p &u64, m &byte, mlen u64, sk &byte) int
+fn C.crypto_sign_ed25519_detached(sig &byte, siglen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, sk &byte) int
 
 pub fn crypto_sign_ed25519_detached(sig &byte, siglen_p &u64, m &byte, mlen u64, sk &byte) int {
-	return C.crypto_sign_ed25519_detached(sig, siglen_p, m, mlen, sk)
+	return C.crypto_sign_ed25519_detached(sig, C.ULLCAST(siglen_p), m, mlen, sk)
 }
 
-fn C.crypto_sign_ed25519(sm &byte, smlen_p &u64, m &byte, mlen u64, sk &byte) int
+fn C.crypto_sign_ed25519(sm &byte, smlen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, sk &byte) int
 
 pub fn crypto_sign_ed25519(sm &byte, smlen_p &u64, m &byte, mlen u64, sk &byte) int {
-	return C.crypto_sign_ed25519(sm, smlen_p, m, mlen, sk)
+	return C.crypto_sign_ed25519(sm, C.ULLCAST(smlen_p), m, mlen, sk)
 }
 
 fn C.crypto_sign_ed25519_seed_keypair(pk &byte, sk &byte, seed &byte) int
@@ -259,10 +264,10 @@ pub fn crypto_sign_ed25519_verify_detached(sig &byte, m &byte, mlen u64, pk &byt
 	return C.crypto_sign_ed25519_verify_detached(sig, m, mlen, pk)
 }
 
-fn C.crypto_sign_ed25519_open(m &byte, mlen_p &u64, sm &byte, smlen u64, pk &byte) int
+fn C.crypto_sign_ed25519_open(m &byte, mlen_p &C.UNSIGNED_LONG_LONG, sm &byte, smlen u64, pk &byte) int
 
 pub fn crypto_sign_ed25519_open(m &byte, mlen_p &u64, sm &byte, smlen u64, pk &byte) int {
-	return C.crypto_sign_ed25519_open(m, mlen_p, sm, smlen, pk)
+	return C.crypto_sign_ed25519_open(m, C.ULLCAST(mlen_p), sm, smlen, pk)
 }
 
 fn C.crypto_secretbox_xsalsa20poly1305(c &byte, m &byte, mlen u64, n &byte, k &byte) int
@@ -328,7 +333,7 @@ pub fn crypto_secretbox_xchacha20poly1305_messagebytes_max() size_t {
 fn C.crypto_secretbox_primitive() &char
 
 pub fn crypto_secretbox_primitive() &char {
-	return C.crypto_secretbox_primitive()
+	return &char(C.crypto_secretbox_primitive())
 }
 
 fn C.crypto_secretbox(c &byte, m &byte, mlen u64, n &byte, k &byte) int
@@ -424,7 +429,7 @@ pub fn crypto_pwhash_strbytes() size_t {
 fn C.crypto_pwhash_strprefix() &char
 
 pub fn crypto_pwhash_strprefix() &char {
-	return C.crypto_pwhash_strprefix()
+	return &char(C.crypto_pwhash_strprefix())
 }
 
 fn C.crypto_pwhash_opslimit_min() u64
@@ -496,7 +501,7 @@ pub fn crypto_pwhash(out &byte, outlen u64, passwd &char, passwdlen u64, salt &b
 fn C.crypto_pwhash_primitive() &char
 
 pub fn crypto_pwhash_primitive() &char {
-	return C.crypto_pwhash_primitive()
+	return &char(C.crypto_pwhash_primitive())
 }
 
 enum Argon2_ErrorCodes {
@@ -747,7 +752,7 @@ pub fn crypto_pwhash_argon2i_strbytes() size_t {
 fn C.crypto_pwhash_argon2i_strprefix() &char
 
 pub fn crypto_pwhash_argon2i_strprefix() &char {
-	return C.crypto_pwhash_argon2i_strprefix()
+	return &char(C.crypto_pwhash_argon2i_strprefix())
 }
 
 fn C.crypto_pwhash_argon2i_opslimit_min() u64
@@ -881,7 +886,7 @@ pub fn crypto_pwhash_argon2id_strbytes() size_t {
 fn C.crypto_pwhash_argon2id_strprefix() &char
 
 pub fn crypto_pwhash_argon2id_strprefix() &char {
-	return C.crypto_pwhash_argon2id_strprefix()
+	return &char(C.crypto_pwhash_argon2id_strprefix())
 }
 
 fn C.crypto_pwhash_argon2id_opslimit_min() u64
@@ -1084,7 +1089,7 @@ pub fn crypto_pwhash_scryptsalsa208sha256_strbytes() size_t {
 fn C.crypto_pwhash_scryptsalsa208sha256_strprefix() &char
 
 pub fn crypto_pwhash_scryptsalsa208sha256_strprefix() &char {
-	return C.crypto_pwhash_scryptsalsa208sha256_strprefix()
+	return &char(C.crypto_pwhash_scryptsalsa208sha256_strprefix())
 }
 
 fn C.crypto_pwhash_scryptsalsa208sha256_opslimit_min() u64
@@ -1241,7 +1246,7 @@ pub fn crypto_auth_hmacsha512256_verify(h &byte, in_ &byte, inlen u64, k &byte) 
 fn C.crypto_auth_primitive() &char
 
 pub fn crypto_auth_primitive() &char {
-	return C.crypto_auth_primitive()
+	return &char(C.crypto_auth_primitive())
 }
 
 fn C.crypto_auth(out &byte, in_ &byte, inlen u64, k &byte) int
@@ -1289,13 +1294,13 @@ pub fn crypto_auth_hmacsha256_verify(h &byte, in_ &byte, inlen u64, k &byte) int
 fn C.crypto_kdf_primitive() &char
 
 pub fn crypto_kdf_primitive() &char {
-	return C.crypto_kdf_primitive()
+	return &char(C.crypto_kdf_primitive())
 }
 
 fn C.crypto_shorthash_primitive() &char
 
 pub fn crypto_shorthash_primitive() &char {
-	return C.crypto_shorthash_primitive()
+	return &char(C.crypto_shorthash_primitive())
 }
 
 fn C.crypto_shorthash(out &byte, in_ &byte, inlen u64, k &byte) int
@@ -1410,7 +1415,7 @@ pub fn crypto_onetimeauth_verify(h &byte, in_ &byte, inlen u64, k &byte) int {
 fn C.crypto_onetimeauth_primitive() &char
 
 pub fn crypto_onetimeauth_primitive() &char {
-	return C.crypto_onetimeauth_primitive()
+	return &char(C.crypto_onetimeauth_primitive())
 }
 
 // struct decl name="crypto_onetimeauth_poly1305_implementation"
@@ -1506,7 +1511,7 @@ struct InternalRandom {
 fn C.randombytes_implementation_name() &char
 
 pub fn randombytes_implementation_name() &char {
-	return C.randombytes_implementation_name()
+	return &char(C.randombytes_implementation_name())
 }
 
 fn C.randombytes_random() u32
@@ -1839,7 +1844,7 @@ pub fn crypto_box_curve25519xchacha20poly1305_sealbytes() size_t {
 fn C.crypto_box_primitive() &char
 
 pub fn crypto_box_primitive() &char {
-	return C.crypto_box_primitive()
+	return &char(C.crypto_box_primitive())
 }
 
 fn C.crypto_box_seed_keypair(pk &byte, sk &byte, seed &byte) int
@@ -1887,13 +1892,13 @@ pub fn crypto_box_open(m &byte, c &byte, clen u64, n &byte, pk &byte, sk &byte) 
 fn C.sodium_bin2hex(hex &char, hex_maxlen size_t, bin &byte, bin_len size_t) &char
 
 pub fn sodium_bin2hex(hex &char, hex_maxlen size_t, bin &byte, bin_len size_t) &char {
-	return C.sodium_bin2hex(hex, hex_maxlen, bin, bin_len)
+	return &char(C.sodium_bin2hex(hex, hex_maxlen, bin, bin_len))
 }
 
 fn C.sodium_hex2bin(bin &byte, bin_maxlen size_t, hex &char, hex_len size_t, ignore &char, bin_len &size_t, hex_end &&char) int
 
 pub fn sodium_hex2bin(bin &byte, bin_maxlen size_t, hex &char, hex_len size_t, ignore &char, bin_len &size_t, hex_end &&char) int {
-	return C.sodium_hex2bin(bin, bin_maxlen, hex, hex_len, ignore, bin_len, hex_end)
+	return C.sodium_hex2bin(bin, bin_maxlen, hex, hex_len, ignore, bin_len, voidptr(hex_end))
 }
 
 fn C.sodium_base64_encoded_len(bin_len size_t, variant int) size_t
@@ -1905,13 +1910,13 @@ pub fn sodium_base64_encoded_len(bin_len size_t, variant int) size_t {
 fn C.sodium_bin2base64(b64 &char, b64_maxlen size_t, bin &byte, bin_len size_t, variant int) &char
 
 pub fn sodium_bin2base64(b64 &char, b64_maxlen size_t, bin &byte, bin_len size_t, variant int) &char {
-	return C.sodium_bin2base64(b64, b64_maxlen, bin, bin_len, variant)
+	return &char(C.sodium_bin2base64(b64, b64_maxlen, bin, bin_len, variant))
 }
 
 fn C.sodium_base642bin(bin &byte, bin_maxlen size_t, b64 &char, b64_len size_t, ignore &char, bin_len &size_t, b64_end &&char, variant int) int
 
 pub fn sodium_base642bin(bin &byte, bin_maxlen size_t, b64 &char, b64_len size_t, ignore &char, bin_len &size_t, b64_end &&char, variant int) int {
-	return C.sodium_base642bin(bin, bin_maxlen, b64, b64_len, ignore, bin_len, b64_end,
+	return C.sodium_base642bin(bin, bin_maxlen, b64, b64_len, ignore, bin_len, voidptr(b64_end),
 		variant)
 }
 
@@ -2129,7 +2134,7 @@ pub fn sodium_unpad(unpadded_buflen_p &size_t, buf &byte, padded_buflen size_t, 
 fn C.sodium_version_string() &char
 
 pub fn sodium_version_string() &char {
-	return C.sodium_version_string()
+	return &char(C.sodium_version_string())
 }
 
 fn C.sodium_library_version_major() int
@@ -2278,7 +2283,7 @@ pub fn crypto_stream_salsa20_xor(c &byte, m &byte, mlen u64, n &byte, k &byte) i
 fn C.crypto_stream_primitive() &char
 
 pub fn crypto_stream_primitive() &char {
-	return C.crypto_stream_primitive()
+	return &char(C.crypto_stream_primitive())
 }
 
 fn C.crypto_stream(c &byte, clen u64, n &byte, k &byte) int
@@ -2305,17 +2310,17 @@ pub fn crypto_stream_salsa2012_xor(c &byte, m &byte, mlen u64, n &byte, k &byte)
 	return C.crypto_stream_salsa2012_xor(c, m, mlen, n, k)
 }
 
-fn C.crypto_stream_salsa208(c &byte, clen u64, n &byte, k &byte) int
+// fn C.crypto_stream_salsa208(c &byte, clen u64, n &byte, k &byte) int
 
-pub fn crypto_stream_salsa208(c &byte, clen u64, n &byte, k &byte) int {
-	return C.crypto_stream_salsa208(c, clen, n, k)
-}
+// pub fn crypto_stream_salsa208(c &byte, clen u64, n &byte, k &byte) int {
+//	return C.crypto_stream_salsa208(c, clen, n, k)
+//}
 
-fn C.crypto_stream_salsa208_xor(c &byte, m &byte, mlen u64, n &byte, k &byte) int
+// fn C.crypto_stream_salsa208_xor(c &byte, m &byte, mlen u64, n &byte, k &byte) int
 
-pub fn crypto_stream_salsa208_xor(c &byte, m &byte, mlen u64, n &byte, k &byte) int {
-	return C.crypto_stream_salsa208_xor(c, m, mlen, n, k)
-}
+// pub fn crypto_stream_salsa208_xor(c &byte, m &byte, mlen u64, n &byte, k &byte) int {
+//	return C.crypto_stream_salsa208_xor(c, m, mlen, n, k)
+//}
 
 fn C.crypto_stream_xsalsa20(c &byte, clen u64, n &byte, k &byte) int
 
@@ -2350,21 +2355,21 @@ pub fn crypto_hash(out &byte, in_ &byte, inlen u64) int {
 fn C.crypto_hash_primitive() &char
 
 pub fn crypto_hash_primitive() &char {
-	return C.crypto_hash_primitive()
+	return &char(C.crypto_hash_primitive())
 }
 
-fn C.crypto_aead_xchacha20poly1305_ietf_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
+fn C.crypto_aead_xchacha20poly1305_ietf_encrypt_detached(c &byte, mac &byte, maclen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_xchacha20poly1305_ietf_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_xchacha20poly1305_ietf_encrypt_detached(c, mac, maclen_p, m,
-		mlen, ad, adlen, nsec, npub, k)
+	return C.crypto_aead_xchacha20poly1305_ietf_encrypt_detached(c, mac, C.ULLCAST(maclen_p),
+		m, mlen, ad, adlen, nsec, npub, k)
 }
 
-fn C.crypto_aead_xchacha20poly1305_ietf_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
+fn C.crypto_aead_xchacha20poly1305_ietf_encrypt(c &byte, clen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_xchacha20poly1305_ietf_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_xchacha20poly1305_ietf_encrypt(c, clen_p, m, mlen, ad, adlen,
-		nsec, npub, k)
+	return C.crypto_aead_xchacha20poly1305_ietf_encrypt(c, C.ULLCAST(clen_p), m, mlen,
+		ad, adlen, nsec, npub, k)
 }
 
 fn C.crypto_aead_xchacha20poly1305_ietf_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int
@@ -2374,11 +2379,11 @@ pub fn crypto_aead_xchacha20poly1305_ietf_decrypt_detached(m &byte, nsec &byte, 
 		ad, adlen, npub, k)
 }
 
-fn C.crypto_aead_xchacha20poly1305_ietf_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
+fn C.crypto_aead_xchacha20poly1305_ietf_decrypt(m &byte, mlen_p &C.UNSIGNED_LONG_LONG, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_xchacha20poly1305_ietf_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_xchacha20poly1305_ietf_decrypt(m, mlen_p, nsec, c, clen, ad,
-		adlen, npub, k)
+	return C.crypto_aead_xchacha20poly1305_ietf_decrypt(m, C.ULLCAST(mlen_p), nsec, c,
+		clen, ad, adlen, npub, k)
 }
 
 fn C.crypto_aead_xchacha20poly1305_ietf_keybytes() size_t
@@ -2411,18 +2416,18 @@ pub fn crypto_aead_xchacha20poly1305_ietf_messagebytes_max() size_t {
 	return C.crypto_aead_xchacha20poly1305_ietf_messagebytes_max()
 }
 
-fn C.crypto_aead_aes256gcm_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
+fn C.crypto_aead_aes256gcm_encrypt_detached(c &byte, mac &byte, maclen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_aes256gcm_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_aes256gcm_encrypt_detached(c, mac, maclen_p, m, mlen, ad, adlen,
-		nsec, npub, k)
+	return C.crypto_aead_aes256gcm_encrypt_detached(c, mac, C.ULLCAST(maclen_p), m, mlen,
+		ad, adlen, nsec, npub, k)
 }
 
-fn C.crypto_aead_aes256gcm_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
+fn C.crypto_aead_aes256gcm_encrypt(c &byte, clen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_aes256gcm_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_aes256gcm_encrypt(c, clen_p, m, mlen, ad, adlen, nsec, npub,
-		k)
+	return C.crypto_aead_aes256gcm_encrypt(c, C.ULLCAST(clen_p), m, mlen, ad, adlen, nsec,
+		npub, k)
 }
 
 fn C.crypto_aead_aes256gcm_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int
@@ -2432,11 +2437,11 @@ pub fn crypto_aead_aes256gcm_decrypt_detached(m &byte, nsec &byte, c &byte, clen
 		npub, k)
 }
 
-fn C.crypto_aead_aes256gcm_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
+fn C.crypto_aead_aes256gcm_decrypt(m &byte, mlen_p &C.UNSIGNED_LONG_LONG, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_aes256gcm_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_aes256gcm_decrypt(m, mlen_p, nsec, c, clen, ad, adlen, npub,
-		k)
+	return C.crypto_aead_aes256gcm_decrypt(m, C.ULLCAST(mlen_p), nsec, c, clen, ad, adlen,
+		npub, k)
 }
 
 fn C.crypto_aead_aes256gcm_is_available() int
@@ -2481,32 +2486,32 @@ pub fn crypto_aead_aes256gcm_messagebytes_max() size_t {
 	return C.crypto_aead_aes256gcm_messagebytes_max()
 }
 
-fn C.crypto_aead_chacha20poly1305_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
+fn C.crypto_aead_chacha20poly1305_encrypt_detached(c &byte, mac &byte, maclen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_encrypt_detached(c, mac, maclen_p, m, mlen,
-		ad, adlen, nsec, npub, k)
+	return C.crypto_aead_chacha20poly1305_encrypt_detached(c, mac, C.ULLCAST(maclen_p),
+		m, mlen, ad, adlen, nsec, npub, k)
 }
 
-fn C.crypto_aead_chacha20poly1305_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
+fn C.crypto_aead_chacha20poly1305_encrypt(c &byte, clen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_encrypt(c, clen_p, m, mlen, ad, adlen, nsec,
-		npub, k)
+	return C.crypto_aead_chacha20poly1305_encrypt(c, C.ULLCAST(clen_p), m, mlen, ad, adlen,
+		nsec, npub, k)
 }
 
-fn C.crypto_aead_chacha20poly1305_ietf_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
+fn C.crypto_aead_chacha20poly1305_ietf_encrypt_detached(c &byte, mac &byte, maclen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_ietf_encrypt_detached(c &byte, mac &byte, maclen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_ietf_encrypt_detached(c, mac, maclen_p, m, mlen,
-		ad, adlen, nsec, npub, k)
+	return C.crypto_aead_chacha20poly1305_ietf_encrypt_detached(c, mac, C.ULLCAST(maclen_p),
+		m, mlen, ad, adlen, nsec, npub, k)
 }
 
-fn C.crypto_aead_chacha20poly1305_ietf_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
+fn C.crypto_aead_chacha20poly1305_ietf_encrypt(c &byte, clen_p &C.UNSIGNED_LONG_LONG, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_ietf_encrypt(c &byte, clen_p &u64, m &byte, mlen u64, ad &byte, adlen u64, nsec &byte, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_ietf_encrypt(c, clen_p, m, mlen, ad, adlen,
-		nsec, npub, k)
+	return C.crypto_aead_chacha20poly1305_ietf_encrypt(c, C.ULLCAST(clen_p), m, mlen,
+		ad, adlen, nsec, npub, k)
 }
 
 fn C.crypto_aead_chacha20poly1305_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int
@@ -2516,11 +2521,11 @@ pub fn crypto_aead_chacha20poly1305_decrypt_detached(m &byte, nsec &byte, c &byt
 		adlen, npub, k)
 }
 
-fn C.crypto_aead_chacha20poly1305_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
+fn C.crypto_aead_chacha20poly1305_decrypt(m &byte, mlen_p &C.UNSIGNED_LONG_LONG, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_decrypt(m, mlen_p, nsec, c, clen, ad, adlen,
-		npub, k)
+	return C.crypto_aead_chacha20poly1305_decrypt(m, C.ULLCAST(mlen_p), nsec, c, clen,
+		ad, adlen, npub, k)
 }
 
 fn C.crypto_aead_chacha20poly1305_ietf_decrypt_detached(m &byte, nsec &byte, c &byte, clen u64, mac &byte, ad &byte, adlen u64, npub &byte, k &byte) int
@@ -2530,11 +2535,11 @@ pub fn crypto_aead_chacha20poly1305_ietf_decrypt_detached(m &byte, nsec &byte, c
 		ad, adlen, npub, k)
 }
 
-fn C.crypto_aead_chacha20poly1305_ietf_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
+fn C.crypto_aead_chacha20poly1305_ietf_decrypt(m &byte, mlen_p &C.UNSIGNED_LONG_LONG, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int
 
 pub fn crypto_aead_chacha20poly1305_ietf_decrypt(m &byte, mlen_p &u64, nsec &byte, c &byte, clen u64, ad &byte, adlen u64, npub &byte, k &byte) int {
-	return C.crypto_aead_chacha20poly1305_ietf_decrypt(m, mlen_p, nsec, c, clen, ad, adlen,
-		npub, k)
+	return C.crypto_aead_chacha20poly1305_ietf_decrypt(m, C.ULLCAST(mlen_p), nsec, c,
+		clen, ad, adlen, npub, k)
 }
 
 fn C.crypto_aead_chacha20poly1305_ietf_keybytes() size_t
@@ -2717,29 +2722,29 @@ pub fn crypto_core_salsa208(out &byte, in_ &byte, k &byte, c &byte) int {
 	return C.crypto_core_salsa208(out, in_, k, c)
 }
 
-fn C.crypto_core_salsa208_outputbytes() size_t
+// fn C.crypto_core_salsa208_outputbytes() size_t
 
-pub fn crypto_core_salsa208_outputbytes() size_t {
-	return C.crypto_core_salsa208_outputbytes()
-}
+// pub fn crypto_core_salsa208_outputbytes() size_t {
+//	return C.crypto_core_salsa208_outputbytes()
+//}
 
-fn C.crypto_core_salsa208_inputbytes() size_t
+// fn C.crypto_core_salsa208_inputbytes() size_t
 
-pub fn crypto_core_salsa208_inputbytes() size_t {
-	return C.crypto_core_salsa208_inputbytes()
-}
+// pub fn crypto_core_salsa208_inputbytes() size_t {
+//	return C.crypto_core_salsa208_inputbytes()
+//}
 
-fn C.crypto_core_salsa208_keybytes() size_t
+// fn C.crypto_core_salsa208_keybytes() size_t
 
-pub fn crypto_core_salsa208_keybytes() size_t {
-	return C.crypto_core_salsa208_keybytes()
-}
+// pub fn crypto_core_salsa208_keybytes() size_t {
+//	return C.crypto_core_salsa208_keybytes()
+//}
 
-fn C.crypto_core_salsa208_constbytes() size_t
+// fn C.crypto_core_salsa208_constbytes() size_t
 
-pub fn crypto_core_salsa208_constbytes() size_t {
-	return C.crypto_core_salsa208_constbytes()
-}
+// pub fn crypto_core_salsa208_constbytes() size_t {
+//	return C.crypto_core_salsa208_constbytes()
+//}
 
 fn C.crypto_core_hchacha20(out &byte, in_ &byte, k &byte, c &byte) int
 
