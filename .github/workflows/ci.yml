@@ -17,6 +17,9 @@ jobs:
       with:
         path: libsodium
 
+    - name: Install libsodium-dev package
+      run: sudo apt-get install --quiet -y libsodium-dev
+
     - name: Build V
       run: cd v && make && sudo ./v symlink && cd -
 
