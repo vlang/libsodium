@@ -77,15 +77,15 @@ type blake2b_compress_fn = fn (&blake2b_state, & byte) int
 // struct decl name="blake2b_state"
 // typedef struct
 // ['referenced', 'blake2b_state', 'struct blake2b_state:struct blake2b_state']
-fn C.crypto_generichash_blake2b(out &byte, outlen size_t, in_ &byte, inlen u64, key &byte, keylen size_t) int
+fn C.crypto_generichash_blake2b(out &byte, outlen usize, in_ &byte, inlen u64, key &byte, keylen usize) int
 
-pub fn crypto_generichash_blake2b(out &byte, outlen size_t, in_ &byte, inlen u64, key &byte, keylen size_t) int {
+pub fn crypto_generichash_blake2b(out &byte, outlen usize, in_ &byte, inlen u64, key &byte, keylen usize) int {
 	return C.crypto_generichash_blake2b(out, outlen, in_, inlen, key, keylen)
 }
 
-fn C.crypto_generichash_blake2b_salt_personal(out &byte, outlen size_t, in_ &byte, inlen u64, key &byte, keylen size_t, salt &byte, personal &byte) int
+fn C.crypto_generichash_blake2b_salt_personal(out &byte, outlen usize, in_ &byte, inlen u64, key &byte, keylen usize, salt &byte, personal &byte) int
 
-pub fn crypto_generichash_blake2b_salt_personal(out &byte, outlen size_t, in_ &byte, inlen u64, key &byte, keylen size_t, salt &byte, personal &byte) int {
+pub fn crypto_generichash_blake2b_salt_personal(out &byte, outlen usize, in_ &byte, inlen u64, key &byte, keylen usize, salt &byte, personal &byte) int {
 	return C.crypto_generichash_blake2b_salt_personal(out, outlen, in_, inlen, key, keylen,
 		salt, personal)
 }
@@ -102,27 +102,27 @@ pub fn crypto_generichash_primitive() &char {
 	return &char(C.crypto_generichash_primitive())
 }
 
-fn C.crypto_kx_publickeybytes() size_t
+fn C.crypto_kx_publickeybytes() usize
 
-pub fn crypto_kx_publickeybytes() size_t {
+pub fn crypto_kx_publickeybytes() usize {
 	return C.crypto_kx_publickeybytes()
 }
 
-fn C.crypto_kx_secretkeybytes() size_t
+fn C.crypto_kx_secretkeybytes() usize
 
-pub fn crypto_kx_secretkeybytes() size_t {
+pub fn crypto_kx_secretkeybytes() usize {
 	return C.crypto_kx_secretkeybytes()
 }
 
-fn C.crypto_kx_seedbytes() size_t
+fn C.crypto_kx_seedbytes() usize
 
-pub fn crypto_kx_seedbytes() size_t {
+pub fn crypto_kx_seedbytes() usize {
 	return C.crypto_kx_seedbytes()
 }
 
-fn C.crypto_kx_sessionkeybytes() size_t
+fn C.crypto_kx_sessionkeybytes() usize
 
-pub fn crypto_kx_sessionkeybytes() size_t {
+pub fn crypto_kx_sessionkeybytes() usize {
 	return C.crypto_kx_sessionkeybytes()
 }
 
@@ -174,39 +174,39 @@ pub fn crypto_sign_verify_detached(sig &byte, m &byte, mlen u64, pk &byte) int {
 	return C.crypto_sign_verify_detached(sig, m, mlen, pk)
 }
 
-fn C.crypto_sign_ed25519ph_statebytes() size_t
+fn C.crypto_sign_ed25519ph_statebytes() usize
 
-pub fn crypto_sign_ed25519ph_statebytes() size_t {
+pub fn crypto_sign_ed25519ph_statebytes() usize {
 	return C.crypto_sign_ed25519ph_statebytes()
 }
 
-fn C.crypto_sign_ed25519_bytes() size_t
+fn C.crypto_sign_ed25519_bytes() usize
 
-pub fn crypto_sign_ed25519_bytes() size_t {
+pub fn crypto_sign_ed25519_bytes() usize {
 	return C.crypto_sign_ed25519_bytes()
 }
 
-fn C.crypto_sign_ed25519_seedbytes() size_t
+fn C.crypto_sign_ed25519_seedbytes() usize
 
-pub fn crypto_sign_ed25519_seedbytes() size_t {
+pub fn crypto_sign_ed25519_seedbytes() usize {
 	return C.crypto_sign_ed25519_seedbytes()
 }
 
-fn C.crypto_sign_ed25519_publickeybytes() size_t
+fn C.crypto_sign_ed25519_publickeybytes() usize
 
-pub fn crypto_sign_ed25519_publickeybytes() size_t {
+pub fn crypto_sign_ed25519_publickeybytes() usize {
 	return C.crypto_sign_ed25519_publickeybytes()
 }
 
-fn C.crypto_sign_ed25519_secretkeybytes() size_t
+fn C.crypto_sign_ed25519_secretkeybytes() usize
 
-pub fn crypto_sign_ed25519_secretkeybytes() size_t {
+pub fn crypto_sign_ed25519_secretkeybytes() usize {
 	return C.crypto_sign_ed25519_secretkeybytes()
 }
 
-fn C.crypto_sign_ed25519_messagebytes_max() size_t
+fn C.crypto_sign_ed25519_messagebytes_max() usize
 
-pub fn crypto_sign_ed25519_messagebytes_max() size_t {
+pub fn crypto_sign_ed25519_messagebytes_max() usize {
 	return C.crypto_sign_ed25519_messagebytes_max()
 }
 
@@ -306,27 +306,27 @@ pub fn crypto_secretbox_xchacha20poly1305_open_easy(m &byte, c &byte, clen u64, 
 	return C.crypto_secretbox_xchacha20poly1305_open_easy(m, c, clen, n, k)
 }
 
-fn C.crypto_secretbox_xchacha20poly1305_keybytes() size_t
+fn C.crypto_secretbox_xchacha20poly1305_keybytes() usize
 
-pub fn crypto_secretbox_xchacha20poly1305_keybytes() size_t {
+pub fn crypto_secretbox_xchacha20poly1305_keybytes() usize {
 	return C.crypto_secretbox_xchacha20poly1305_keybytes()
 }
 
-fn C.crypto_secretbox_xchacha20poly1305_noncebytes() size_t
+fn C.crypto_secretbox_xchacha20poly1305_noncebytes() usize
 
-pub fn crypto_secretbox_xchacha20poly1305_noncebytes() size_t {
+pub fn crypto_secretbox_xchacha20poly1305_noncebytes() usize {
 	return C.crypto_secretbox_xchacha20poly1305_noncebytes()
 }
 
-fn C.crypto_secretbox_xchacha20poly1305_macbytes() size_t
+fn C.crypto_secretbox_xchacha20poly1305_macbytes() usize
 
-pub fn crypto_secretbox_xchacha20poly1305_macbytes() size_t {
+pub fn crypto_secretbox_xchacha20poly1305_macbytes() usize {
 	return C.crypto_secretbox_xchacha20poly1305_macbytes()
 }
 
-fn C.crypto_secretbox_xchacha20poly1305_messagebytes_max() size_t
+fn C.crypto_secretbox_xchacha20poly1305_messagebytes_max() usize
 
-pub fn crypto_secretbox_xchacha20poly1305_messagebytes_max() size_t {
+pub fn crypto_secretbox_xchacha20poly1305_messagebytes_max() usize {
 	return C.crypto_secretbox_xchacha20poly1305_messagebytes_max()
 }
 
@@ -390,39 +390,39 @@ pub fn crypto_pwhash_alg_default() int {
 	return C.crypto_pwhash_alg_default()
 }
 
-fn C.crypto_pwhash_bytes_min() size_t
+fn C.crypto_pwhash_bytes_min() usize
 
-pub fn crypto_pwhash_bytes_min() size_t {
+pub fn crypto_pwhash_bytes_min() usize {
 	return C.crypto_pwhash_bytes_min()
 }
 
-fn C.crypto_pwhash_bytes_max() size_t
+fn C.crypto_pwhash_bytes_max() usize
 
-pub fn crypto_pwhash_bytes_max() size_t {
+pub fn crypto_pwhash_bytes_max() usize {
 	return C.crypto_pwhash_bytes_max()
 }
 
-fn C.crypto_pwhash_passwd_min() size_t
+fn C.crypto_pwhash_passwd_min() usize
 
-pub fn crypto_pwhash_passwd_min() size_t {
+pub fn crypto_pwhash_passwd_min() usize {
 	return C.crypto_pwhash_passwd_min()
 }
 
-fn C.crypto_pwhash_passwd_max() size_t
+fn C.crypto_pwhash_passwd_max() usize
 
-pub fn crypto_pwhash_passwd_max() size_t {
+pub fn crypto_pwhash_passwd_max() usize {
 	return C.crypto_pwhash_passwd_max()
 }
 
-fn C.crypto_pwhash_saltbytes() size_t
+fn C.crypto_pwhash_saltbytes() usize
 
-pub fn crypto_pwhash_saltbytes() size_t {
+pub fn crypto_pwhash_saltbytes() usize {
 	return C.crypto_pwhash_saltbytes()
 }
 
-fn C.crypto_pwhash_strbytes() size_t
+fn C.crypto_pwhash_strbytes() usize
 
-pub fn crypto_pwhash_strbytes() size_t {
+pub fn crypto_pwhash_strbytes() usize {
 	return C.crypto_pwhash_strbytes()
 }
 
@@ -444,15 +444,15 @@ pub fn crypto_pwhash_opslimit_max() u64 {
 	return C.crypto_pwhash_opslimit_max()
 }
 
-fn C.crypto_pwhash_memlimit_min() size_t
+fn C.crypto_pwhash_memlimit_min() usize
 
-pub fn crypto_pwhash_memlimit_min() size_t {
+pub fn crypto_pwhash_memlimit_min() usize {
 	return C.crypto_pwhash_memlimit_min()
 }
 
-fn C.crypto_pwhash_memlimit_max() size_t
+fn C.crypto_pwhash_memlimit_max() usize
 
-pub fn crypto_pwhash_memlimit_max() size_t {
+pub fn crypto_pwhash_memlimit_max() usize {
 	return C.crypto_pwhash_memlimit_max()
 }
 
@@ -462,9 +462,9 @@ pub fn crypto_pwhash_opslimit_interactive() u64 {
 	return C.crypto_pwhash_opslimit_interactive()
 }
 
-fn C.crypto_pwhash_memlimit_interactive() size_t
+fn C.crypto_pwhash_memlimit_interactive() usize
 
-pub fn crypto_pwhash_memlimit_interactive() size_t {
+pub fn crypto_pwhash_memlimit_interactive() usize {
 	return C.crypto_pwhash_memlimit_interactive()
 }
 
@@ -474,9 +474,9 @@ pub fn crypto_pwhash_opslimit_moderate() u64 {
 	return C.crypto_pwhash_opslimit_moderate()
 }
 
-fn C.crypto_pwhash_memlimit_moderate() size_t
+fn C.crypto_pwhash_memlimit_moderate() usize
 
-pub fn crypto_pwhash_memlimit_moderate() size_t {
+pub fn crypto_pwhash_memlimit_moderate() usize {
 	return C.crypto_pwhash_memlimit_moderate()
 }
 
@@ -486,15 +486,15 @@ pub fn crypto_pwhash_opslimit_sensitive() u64 {
 	return C.crypto_pwhash_opslimit_sensitive()
 }
 
-fn C.crypto_pwhash_memlimit_sensitive() size_t
+fn C.crypto_pwhash_memlimit_sensitive() usize
 
-pub fn crypto_pwhash_memlimit_sensitive() size_t {
+pub fn crypto_pwhash_memlimit_sensitive() usize {
 	return C.crypto_pwhash_memlimit_sensitive()
 }
 
-fn C.crypto_pwhash(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t, alg int) int
+fn C.crypto_pwhash(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit usize, alg int) int
 
-pub fn crypto_pwhash(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t, alg int) int {
+pub fn crypto_pwhash(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit usize, alg int) int {
 	return C.crypto_pwhash(out, outlen, passwd, passwdlen, salt, opslimit, memlimit, alg)
 }
 
@@ -713,39 +713,39 @@ pub fn crypto_pwhash_argon2i_alg_argon2i13() int {
 	return C.crypto_pwhash_argon2i_alg_argon2i13()
 }
 
-fn C.crypto_pwhash_argon2i_bytes_min() size_t
+fn C.crypto_pwhash_argon2i_bytes_min() usize
 
-pub fn crypto_pwhash_argon2i_bytes_min() size_t {
+pub fn crypto_pwhash_argon2i_bytes_min() usize {
 	return C.crypto_pwhash_argon2i_bytes_min()
 }
 
-fn C.crypto_pwhash_argon2i_bytes_max() size_t
+fn C.crypto_pwhash_argon2i_bytes_max() usize
 
-pub fn crypto_pwhash_argon2i_bytes_max() size_t {
+pub fn crypto_pwhash_argon2i_bytes_max() usize {
 	return C.crypto_pwhash_argon2i_bytes_max()
 }
 
-fn C.crypto_pwhash_argon2i_passwd_min() size_t
+fn C.crypto_pwhash_argon2i_passwd_min() usize
 
-pub fn crypto_pwhash_argon2i_passwd_min() size_t {
+pub fn crypto_pwhash_argon2i_passwd_min() usize {
 	return C.crypto_pwhash_argon2i_passwd_min()
 }
 
-fn C.crypto_pwhash_argon2i_passwd_max() size_t
+fn C.crypto_pwhash_argon2i_passwd_max() usize
 
-pub fn crypto_pwhash_argon2i_passwd_max() size_t {
+pub fn crypto_pwhash_argon2i_passwd_max() usize {
 	return C.crypto_pwhash_argon2i_passwd_max()
 }
 
-fn C.crypto_pwhash_argon2i_saltbytes() size_t
+fn C.crypto_pwhash_argon2i_saltbytes() usize
 
-pub fn crypto_pwhash_argon2i_saltbytes() size_t {
+pub fn crypto_pwhash_argon2i_saltbytes() usize {
 	return C.crypto_pwhash_argon2i_saltbytes()
 }
 
-fn C.crypto_pwhash_argon2i_strbytes() size_t
+fn C.crypto_pwhash_argon2i_strbytes() usize
 
-pub fn crypto_pwhash_argon2i_strbytes() size_t {
+pub fn crypto_pwhash_argon2i_strbytes() usize {
 	return C.crypto_pwhash_argon2i_strbytes()
 }
 
@@ -767,15 +767,15 @@ pub fn crypto_pwhash_argon2i_opslimit_max() u64 {
 	return C.crypto_pwhash_argon2i_opslimit_max()
 }
 
-fn C.crypto_pwhash_argon2i_memlimit_min() size_t
+fn C.crypto_pwhash_argon2i_memlimit_min() usize
 
-pub fn crypto_pwhash_argon2i_memlimit_min() size_t {
+pub fn crypto_pwhash_argon2i_memlimit_min() usize {
 	return C.crypto_pwhash_argon2i_memlimit_min()
 }
 
-fn C.crypto_pwhash_argon2i_memlimit_max() size_t
+fn C.crypto_pwhash_argon2i_memlimit_max() usize
 
-pub fn crypto_pwhash_argon2i_memlimit_max() size_t {
+pub fn crypto_pwhash_argon2i_memlimit_max() usize {
 	return C.crypto_pwhash_argon2i_memlimit_max()
 }
 
@@ -785,9 +785,9 @@ pub fn crypto_pwhash_argon2i_opslimit_interactive() u64 {
 	return C.crypto_pwhash_argon2i_opslimit_interactive()
 }
 
-fn C.crypto_pwhash_argon2i_memlimit_interactive() size_t
+fn C.crypto_pwhash_argon2i_memlimit_interactive() usize
 
-pub fn crypto_pwhash_argon2i_memlimit_interactive() size_t {
+pub fn crypto_pwhash_argon2i_memlimit_interactive() usize {
 	return C.crypto_pwhash_argon2i_memlimit_interactive()
 }
 
@@ -797,9 +797,9 @@ pub fn crypto_pwhash_argon2i_opslimit_moderate() u64 {
 	return C.crypto_pwhash_argon2i_opslimit_moderate()
 }
 
-fn C.crypto_pwhash_argon2i_memlimit_moderate() size_t
+fn C.crypto_pwhash_argon2i_memlimit_moderate() usize
 
-pub fn crypto_pwhash_argon2i_memlimit_moderate() size_t {
+pub fn crypto_pwhash_argon2i_memlimit_moderate() usize {
 	return C.crypto_pwhash_argon2i_memlimit_moderate()
 }
 
@@ -809,15 +809,15 @@ pub fn crypto_pwhash_argon2i_opslimit_sensitive() u64 {
 	return C.crypto_pwhash_argon2i_opslimit_sensitive()
 }
 
-fn C.crypto_pwhash_argon2i_memlimit_sensitive() size_t
+fn C.crypto_pwhash_argon2i_memlimit_sensitive() usize
 
-pub fn crypto_pwhash_argon2i_memlimit_sensitive() size_t {
+pub fn crypto_pwhash_argon2i_memlimit_sensitive() usize {
 	return C.crypto_pwhash_argon2i_memlimit_sensitive()
 }
 
-fn C.crypto_pwhash_argon2i(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t, alg int) int
+fn C.crypto_pwhash_argon2i(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit usize, alg int) int
 
-pub fn crypto_pwhash_argon2i(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t, alg int) int {
+pub fn crypto_pwhash_argon2i(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit usize, alg int) int {
 	return C.crypto_pwhash_argon2i(out, outlen, passwd, passwdlen, salt, opslimit, memlimit,
 		alg)
 }
@@ -847,39 +847,39 @@ pub fn crypto_pwhash_argon2id_alg_argon2id13() int {
 	return C.crypto_pwhash_argon2id_alg_argon2id13()
 }
 
-fn C.crypto_pwhash_argon2id_bytes_min() size_t
+fn C.crypto_pwhash_argon2id_bytes_min() usize
 
-pub fn crypto_pwhash_argon2id_bytes_min() size_t {
+pub fn crypto_pwhash_argon2id_bytes_min() usize {
 	return C.crypto_pwhash_argon2id_bytes_min()
 }
 
-fn C.crypto_pwhash_argon2id_bytes_max() size_t
+fn C.crypto_pwhash_argon2id_bytes_max() usize
 
-pub fn crypto_pwhash_argon2id_bytes_max() size_t {
+pub fn crypto_pwhash_argon2id_bytes_max() usize {
 	return C.crypto_pwhash_argon2id_bytes_max()
 }
 
-fn C.crypto_pwhash_argon2id_passwd_min() size_t
+fn C.crypto_pwhash_argon2id_passwd_min() usize
 
-pub fn crypto_pwhash_argon2id_passwd_min() size_t {
+pub fn crypto_pwhash_argon2id_passwd_min() usize {
 	return C.crypto_pwhash_argon2id_passwd_min()
 }
 
-fn C.crypto_pwhash_argon2id_passwd_max() size_t
+fn C.crypto_pwhash_argon2id_passwd_max() usize
 
-pub fn crypto_pwhash_argon2id_passwd_max() size_t {
+pub fn crypto_pwhash_argon2id_passwd_max() usize {
 	return C.crypto_pwhash_argon2id_passwd_max()
 }
 
-fn C.crypto_pwhash_argon2id_saltbytes() size_t
+fn C.crypto_pwhash_argon2id_saltbytes() usize
 
-pub fn crypto_pwhash_argon2id_saltbytes() size_t {
+pub fn crypto_pwhash_argon2id_saltbytes() usize {
 	return C.crypto_pwhash_argon2id_saltbytes()
 }
 
-fn C.crypto_pwhash_argon2id_strbytes() size_t
+fn C.crypto_pwhash_argon2id_strbytes() usize
 
-pub fn crypto_pwhash_argon2id_strbytes() size_t {
+pub fn crypto_pwhash_argon2id_strbytes() usize {
 	return C.crypto_pwhash_argon2id_strbytes()
 }
 
@@ -901,15 +901,15 @@ pub fn crypto_pwhash_argon2id_opslimit_max() u64 {
 	return C.crypto_pwhash_argon2id_opslimit_max()
 }
 
-fn C.crypto_pwhash_argon2id_memlimit_min() size_t
+fn C.crypto_pwhash_argon2id_memlimit_min() usize
 
-pub fn crypto_pwhash_argon2id_memlimit_min() size_t {
+pub fn crypto_pwhash_argon2id_memlimit_min() usize {
 	return C.crypto_pwhash_argon2id_memlimit_min()
 }
 
-fn C.crypto_pwhash_argon2id_memlimit_max() size_t
+fn C.crypto_pwhash_argon2id_memlimit_max() usize
 
-pub fn crypto_pwhash_argon2id_memlimit_max() size_t {
+pub fn crypto_pwhash_argon2id_memlimit_max() usize {
 	return C.crypto_pwhash_argon2id_memlimit_max()
 }
 
@@ -919,9 +919,9 @@ pub fn crypto_pwhash_argon2id_opslimit_interactive() u64 {
 	return C.crypto_pwhash_argon2id_opslimit_interactive()
 }
 
-fn C.crypto_pwhash_argon2id_memlimit_interactive() size_t
+fn C.crypto_pwhash_argon2id_memlimit_interactive() usize
 
-pub fn crypto_pwhash_argon2id_memlimit_interactive() size_t {
+pub fn crypto_pwhash_argon2id_memlimit_interactive() usize {
 	return C.crypto_pwhash_argon2id_memlimit_interactive()
 }
 
@@ -931,9 +931,9 @@ pub fn crypto_pwhash_argon2id_opslimit_moderate() u64 {
 	return C.crypto_pwhash_argon2id_opslimit_moderate()
 }
 
-fn C.crypto_pwhash_argon2id_memlimit_moderate() size_t
+fn C.crypto_pwhash_argon2id_memlimit_moderate() usize
 
-pub fn crypto_pwhash_argon2id_memlimit_moderate() size_t {
+pub fn crypto_pwhash_argon2id_memlimit_moderate() usize {
 	return C.crypto_pwhash_argon2id_memlimit_moderate()
 }
 
@@ -943,15 +943,15 @@ pub fn crypto_pwhash_argon2id_opslimit_sensitive() u64 {
 	return C.crypto_pwhash_argon2id_opslimit_sensitive()
 }
 
-fn C.crypto_pwhash_argon2id_memlimit_sensitive() size_t
+fn C.crypto_pwhash_argon2id_memlimit_sensitive() usize
 
-pub fn crypto_pwhash_argon2id_memlimit_sensitive() size_t {
+pub fn crypto_pwhash_argon2id_memlimit_sensitive() usize {
 	return C.crypto_pwhash_argon2id_memlimit_sensitive()
 }
 
-fn C.crypto_pwhash_argon2id(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t, alg int) int
+fn C.crypto_pwhash_argon2id(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit usize, alg int) int
 
-pub fn crypto_pwhash_argon2id(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t, alg int) int {
+pub fn crypto_pwhash_argon2id(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit usize, alg int) int {
 	return C.crypto_pwhash_argon2id(out, outlen, passwd, passwdlen, salt, opslimit, memlimit,
 		alg)
 }
@@ -1028,9 +1028,9 @@ type escrypt_kdf_t = fn (&escrypt_local_t, &byte, size_t, &byte, size_t, u64, u3
 // struct decl name="struct"
 // typedef struct
 // ['referenced', 'escrypt_region_t', 'struct escrypt_region_t:escrypt_region_t']
-fn C.crypto_pwhash_scryptsalsa208sha256_ll(passwd &byte, passwdlen size_t, salt &byte, saltlen size_t, N u64, r u32, p u32, buf &byte, buflen size_t) int
+fn C.crypto_pwhash_scryptsalsa208sha256_ll(passwd &byte, passwdlen usize, salt &byte, saltlen usize, N u64, r u32, p u32, buf &byte, buflen usize) int
 
-pub fn crypto_pwhash_scryptsalsa208sha256_ll(passwd &byte, passwdlen size_t, salt &byte, saltlen size_t, N u64, r u32, p u32, buf &byte, buflen size_t) int {
+pub fn crypto_pwhash_scryptsalsa208sha256_ll(passwd &byte, passwdlen usize, salt &byte, saltlen usize, N u64, r u32, p u32, buf &byte, buflen usize) int {
 	return C.crypto_pwhash_scryptsalsa208sha256_ll(passwd, passwdlen, salt, saltlen, N,
 		r, p, buf, buflen)
 }
@@ -1050,39 +1050,39 @@ struct escrypt_block_t {
 // struct decl name="struct"
 // typedef struct
 // ['referenced', 'escrypt_region_t', 'struct escrypt_region_t:escrypt_region_t']
-fn C.crypto_pwhash_scryptsalsa208sha256_bytes_min() size_t
+fn C.crypto_pwhash_scryptsalsa208sha256_bytes_min() usize
 
-pub fn crypto_pwhash_scryptsalsa208sha256_bytes_min() size_t {
+pub fn crypto_pwhash_scryptsalsa208sha256_bytes_min() usize {
 	return C.crypto_pwhash_scryptsalsa208sha256_bytes_min()
 }
 
-fn C.crypto_pwhash_scryptsalsa208sha256_bytes_max() size_t
+fn C.crypto_pwhash_scryptsalsa208sha256_bytes_max() usize
 
-pub fn crypto_pwhash_scryptsalsa208sha256_bytes_max() size_t {
+pub fn crypto_pwhash_scryptsalsa208sha256_bytes_max() usize {
 	return C.crypto_pwhash_scryptsalsa208sha256_bytes_max()
 }
 
-fn C.crypto_pwhash_scryptsalsa208sha256_passwd_min() size_t
+fn C.crypto_pwhash_scryptsalsa208sha256_passwd_min() usize
 
-pub fn crypto_pwhash_scryptsalsa208sha256_passwd_min() size_t {
+pub fn crypto_pwhash_scryptsalsa208sha256_passwd_min() usize {
 	return C.crypto_pwhash_scryptsalsa208sha256_passwd_min()
 }
 
-fn C.crypto_pwhash_scryptsalsa208sha256_passwd_max() size_t
+fn C.crypto_pwhash_scryptsalsa208sha256_passwd_max() usize
 
-pub fn crypto_pwhash_scryptsalsa208sha256_passwd_max() size_t {
+pub fn crypto_pwhash_scryptsalsa208sha256_passwd_max() usize {
 	return C.crypto_pwhash_scryptsalsa208sha256_passwd_max()
 }
 
-fn C.crypto_pwhash_scryptsalsa208sha256_saltbytes() size_t
+fn C.crypto_pwhash_scryptsalsa208sha256_saltbytes() usize
 
-pub fn crypto_pwhash_scryptsalsa208sha256_saltbytes() size_t {
+pub fn crypto_pwhash_scryptsalsa208sha256_saltbytes() usize {
 	return C.crypto_pwhash_scryptsalsa208sha256_saltbytes()
 }
 
-fn C.crypto_pwhash_scryptsalsa208sha256_strbytes() size_t
+fn C.crypto_pwhash_scryptsalsa208sha256_strbytes() usize
 
-pub fn crypto_pwhash_scryptsalsa208sha256_strbytes() size_t {
+pub fn crypto_pwhash_scryptsalsa208sha256_strbytes() usize {
 	return C.crypto_pwhash_scryptsalsa208sha256_strbytes()
 }
 
@@ -1104,15 +1104,15 @@ pub fn crypto_pwhash_scryptsalsa208sha256_opslimit_max() u64 {
 	return C.crypto_pwhash_scryptsalsa208sha256_opslimit_max()
 }
 
-fn C.crypto_pwhash_scryptsalsa208sha256_memlimit_min() size_t
+fn C.crypto_pwhash_scryptsalsa208sha256_memlimit_min() usize
 
-pub fn crypto_pwhash_scryptsalsa208sha256_memlimit_min() size_t {
+pub fn crypto_pwhash_scryptsalsa208sha256_memlimit_min() usize {
 	return C.crypto_pwhash_scryptsalsa208sha256_memlimit_min()
 }
 
-fn C.crypto_pwhash_scryptsalsa208sha256_memlimit_max() size_t
+fn C.crypto_pwhash_scryptsalsa208sha256_memlimit_max() usize
 
-pub fn crypto_pwhash_scryptsalsa208sha256_memlimit_max() size_t {
+pub fn crypto_pwhash_scryptsalsa208sha256_memlimit_max() usize {
 	return C.crypto_pwhash_scryptsalsa208sha256_memlimit_max()
 }
 
@@ -1122,9 +1122,9 @@ pub fn crypto_pwhash_scryptsalsa208sha256_opslimit_interactive() u64 {
 	return C.crypto_pwhash_scryptsalsa208sha256_opslimit_interactive()
 }
 
-fn C.crypto_pwhash_scryptsalsa208sha256_memlimit_interactive() size_t
+fn C.crypto_pwhash_scryptsalsa208sha256_memlimit_interactive() usize
 
-pub fn crypto_pwhash_scryptsalsa208sha256_memlimit_interactive() size_t {
+pub fn crypto_pwhash_scryptsalsa208sha256_memlimit_interactive() usize {
 	return C.crypto_pwhash_scryptsalsa208sha256_memlimit_interactive()
 }
 
@@ -1134,34 +1134,34 @@ pub fn crypto_pwhash_scryptsalsa208sha256_opslimit_sensitive() u64 {
 	return C.crypto_pwhash_scryptsalsa208sha256_opslimit_sensitive()
 }
 
-fn C.crypto_pwhash_scryptsalsa208sha256_memlimit_sensitive() size_t
+fn C.crypto_pwhash_scryptsalsa208sha256_memlimit_sensitive() usize
 
-pub fn crypto_pwhash_scryptsalsa208sha256_memlimit_sensitive() size_t {
+pub fn crypto_pwhash_scryptsalsa208sha256_memlimit_sensitive() usize {
 	return C.crypto_pwhash_scryptsalsa208sha256_memlimit_sensitive()
 }
 
-fn C.crypto_pwhash_scryptsalsa208sha256(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t) int
+fn C.crypto_pwhash_scryptsalsa208sha256(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit usize) int
 
-pub fn crypto_pwhash_scryptsalsa208sha256(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit size_t) int {
+pub fn crypto_pwhash_scryptsalsa208sha256(out &byte, outlen u64, passwd &char, passwdlen u64, salt &byte, opslimit u64, memlimit usize) int {
 	return C.crypto_pwhash_scryptsalsa208sha256(out, outlen, passwd, passwdlen, salt,
 		opslimit, memlimit)
 }
 
-fn C.crypto_verify_16_bytes() size_t
+fn C.crypto_verify_16_bytes() usize
 
-pub fn crypto_verify_16_bytes() size_t {
+pub fn crypto_verify_16_bytes() usize {
 	return C.crypto_verify_16_bytes()
 }
 
-fn C.crypto_verify_32_bytes() size_t
+fn C.crypto_verify_32_bytes() usize
 
-pub fn crypto_verify_32_bytes() size_t {
+pub fn crypto_verify_32_bytes() usize {
 	return C.crypto_verify_32_bytes()
 }
 
-fn C.crypto_verify_64_bytes() size_t
+fn C.crypto_verify_64_bytes() usize
 
-pub fn crypto_verify_64_bytes() size_t {
+pub fn crypto_verify_64_bytes() usize {
 	return C.crypto_verify_64_bytes()
 }
 
@@ -1183,21 +1183,21 @@ pub fn crypto_verify_64(x &byte, y &byte) int {
 	return C.crypto_verify_64(x, y)
 }
 
-fn C.crypto_auth_hmacsha512_bytes() size_t
+fn C.crypto_auth_hmacsha512_bytes() usize
 
-pub fn crypto_auth_hmacsha512_bytes() size_t {
+pub fn crypto_auth_hmacsha512_bytes() usize {
 	return C.crypto_auth_hmacsha512_bytes()
 }
 
-fn C.crypto_auth_hmacsha512_keybytes() size_t
+fn C.crypto_auth_hmacsha512_keybytes() usize
 
-pub fn crypto_auth_hmacsha512_keybytes() size_t {
+pub fn crypto_auth_hmacsha512_keybytes() usize {
 	return C.crypto_auth_hmacsha512_keybytes()
 }
 
-fn C.crypto_auth_hmacsha512_statebytes() size_t
+fn C.crypto_auth_hmacsha512_statebytes() usize
 
-pub fn crypto_auth_hmacsha512_statebytes() size_t {
+pub fn crypto_auth_hmacsha512_statebytes() usize {
 	return C.crypto_auth_hmacsha512_statebytes()
 }
 
@@ -1213,21 +1213,21 @@ pub fn crypto_auth_hmacsha512_verify(h &byte, in_ &byte, inlen u64, k &byte) int
 	return C.crypto_auth_hmacsha512_verify(h, in_, inlen, k)
 }
 
-fn C.crypto_auth_hmacsha512256_bytes() size_t
+fn C.crypto_auth_hmacsha512256_bytes() usize
 
-pub fn crypto_auth_hmacsha512256_bytes() size_t {
+pub fn crypto_auth_hmacsha512256_bytes() usize {
 	return C.crypto_auth_hmacsha512256_bytes()
 }
 
-fn C.crypto_auth_hmacsha512256_keybytes() size_t
+fn C.crypto_auth_hmacsha512256_keybytes() usize
 
-pub fn crypto_auth_hmacsha512256_keybytes() size_t {
+pub fn crypto_auth_hmacsha512256_keybytes() usize {
 	return C.crypto_auth_hmacsha512256_keybytes()
 }
 
-fn C.crypto_auth_hmacsha512256_statebytes() size_t
+fn C.crypto_auth_hmacsha512256_statebytes() usize
 
-pub fn crypto_auth_hmacsha512256_statebytes() size_t {
+pub fn crypto_auth_hmacsha512256_statebytes() usize {
 	return C.crypto_auth_hmacsha512256_statebytes()
 }
 
@@ -1261,21 +1261,21 @@ pub fn crypto_auth_verify(h &byte, in_ &byte, inlen u64, k &byte) int {
 	return C.crypto_auth_verify(h, in_, inlen, k)
 }
 
-fn C.crypto_auth_hmacsha256_bytes() size_t
+fn C.crypto_auth_hmacsha256_bytes() usize
 
-pub fn crypto_auth_hmacsha256_bytes() size_t {
+pub fn crypto_auth_hmacsha256_bytes() usize {
 	return C.crypto_auth_hmacsha256_bytes()
 }
 
-fn C.crypto_auth_hmacsha256_keybytes() size_t
+fn C.crypto_auth_hmacsha256_keybytes() usize
 
-pub fn crypto_auth_hmacsha256_keybytes() size_t {
+pub fn crypto_auth_hmacsha256_keybytes() usize {
 	return C.crypto_auth_hmacsha256_keybytes()
 }
 
-fn C.crypto_auth_hmacsha256_statebytes() size_t
+fn C.crypto_auth_hmacsha256_statebytes() usize
 
-pub fn crypto_auth_hmacsha256_statebytes() size_t {
+pub fn crypto_auth_hmacsha256_statebytes() usize {
 	return C.crypto_auth_hmacsha256_statebytes()
 }
 
@@ -1357,15 +1357,15 @@ pub fn crypto_scalarmult_ed25519_base_noclamp(q &byte, n &byte) int {
 	return C.crypto_scalarmult_ed25519_base_noclamp(q, n)
 }
 
-fn C.crypto_scalarmult_ed25519_bytes() size_t
+fn C.crypto_scalarmult_ed25519_bytes() usize
 
-pub fn crypto_scalarmult_ed25519_bytes() size_t {
+pub fn crypto_scalarmult_ed25519_bytes() usize {
 	return C.crypto_scalarmult_ed25519_bytes()
 }
 
-fn C.crypto_scalarmult_ed25519_scalarbytes() size_t
+fn C.crypto_scalarmult_ed25519_scalarbytes() usize
 
-pub fn crypto_scalarmult_ed25519_scalarbytes() size_t {
+pub fn crypto_scalarmult_ed25519_scalarbytes() usize {
 	return C.crypto_scalarmult_ed25519_scalarbytes()
 }
 
@@ -1459,21 +1459,21 @@ pub fn crypto_onetimeauth_poly1305_verify(h &byte, in_ &byte, inlen u64, k &byte
 	return C.crypto_onetimeauth_poly1305_verify(h, in_, inlen, k)
 }
 
-fn C.crypto_onetimeauth_poly1305_bytes() size_t
+fn C.crypto_onetimeauth_poly1305_bytes() usize
 
-pub fn crypto_onetimeauth_poly1305_bytes() size_t {
+pub fn crypto_onetimeauth_poly1305_bytes() usize {
 	return C.crypto_onetimeauth_poly1305_bytes()
 }
 
-fn C.crypto_onetimeauth_poly1305_keybytes() size_t
+fn C.crypto_onetimeauth_poly1305_keybytes() usize
 
-pub fn crypto_onetimeauth_poly1305_keybytes() size_t {
+pub fn crypto_onetimeauth_poly1305_keybytes() usize {
 	return C.crypto_onetimeauth_poly1305_keybytes()
 }
 
-fn C.crypto_onetimeauth_poly1305_statebytes() size_t
+fn C.crypto_onetimeauth_poly1305_statebytes() usize
 
-pub fn crypto_onetimeauth_poly1305_statebytes() size_t {
+pub fn crypto_onetimeauth_poly1305_statebytes() usize {
 	return C.crypto_onetimeauth_poly1305_statebytes()
 }
 
@@ -1502,7 +1502,7 @@ struct InternalRandomGlobal {
 // ['referenced', 'InternalRandom', 'struct InternalRandom_:struct InternalRandom_']
 struct InternalRandom {
 	initialized   int
-	rnd32_outleft size_t
+	rnd32_outleft usize
 	key           byte
 	rnd32         byte
 	nonce         u64
@@ -1526,15 +1526,15 @@ pub fn randombytes_uniform(upper_bound u32) u32 {
 	return C.randombytes_uniform(upper_bound)
 }
 
-fn C.randombytes_buf(buf voidptr, size size_t)
+fn C.randombytes_buf(buf voidptr, size usize)
 
-pub fn randombytes_buf(buf voidptr, size size_t) {
+pub fn randombytes_buf(buf voidptr, size usize) {
 	C.randombytes_buf(buf, size)
 }
 
-fn C.randombytes_seedbytes() size_t
+fn C.randombytes_seedbytes() usize
 
-pub fn randombytes_seedbytes() size_t {
+pub fn randombytes_seedbytes() usize {
 	return C.randombytes_seedbytes()
 }
 
@@ -1610,9 +1610,9 @@ pub fn crypto_box_seal_open(m &byte, c &byte, clen u64, pk &byte, sk &byte) int 
 	return C.crypto_box_seal_open(m, c, clen, pk, sk)
 }
 
-fn C.crypto_box_sealbytes() size_t
+fn C.crypto_box_sealbytes() usize
 
-pub fn crypto_box_sealbytes() size_t {
+pub fn crypto_box_sealbytes() usize {
 	return C.crypto_box_sealbytes()
 }
 
@@ -1658,57 +1658,57 @@ pub fn crypto_box_curve25519xsalsa20poly1305_open(m &byte, c &byte, clen u64, n 
 	return C.crypto_box_curve25519xsalsa20poly1305_open(m, c, clen, n, pk, sk)
 }
 
-fn C.crypto_box_curve25519xsalsa20poly1305_seedbytes() size_t
+fn C.crypto_box_curve25519xsalsa20poly1305_seedbytes() usize
 
-pub fn crypto_box_curve25519xsalsa20poly1305_seedbytes() size_t {
+pub fn crypto_box_curve25519xsalsa20poly1305_seedbytes() usize {
 	return C.crypto_box_curve25519xsalsa20poly1305_seedbytes()
 }
 
-fn C.crypto_box_curve25519xsalsa20poly1305_publickeybytes() size_t
+fn C.crypto_box_curve25519xsalsa20poly1305_publickeybytes() usize
 
-pub fn crypto_box_curve25519xsalsa20poly1305_publickeybytes() size_t {
+pub fn crypto_box_curve25519xsalsa20poly1305_publickeybytes() usize {
 	return C.crypto_box_curve25519xsalsa20poly1305_publickeybytes()
 }
 
-fn C.crypto_box_curve25519xsalsa20poly1305_secretkeybytes() size_t
+fn C.crypto_box_curve25519xsalsa20poly1305_secretkeybytes() usize
 
-pub fn crypto_box_curve25519xsalsa20poly1305_secretkeybytes() size_t {
+pub fn crypto_box_curve25519xsalsa20poly1305_secretkeybytes() usize {
 	return C.crypto_box_curve25519xsalsa20poly1305_secretkeybytes()
 }
 
-fn C.crypto_box_curve25519xsalsa20poly1305_beforenmbytes() size_t
+fn C.crypto_box_curve25519xsalsa20poly1305_beforenmbytes() usize
 
-pub fn crypto_box_curve25519xsalsa20poly1305_beforenmbytes() size_t {
+pub fn crypto_box_curve25519xsalsa20poly1305_beforenmbytes() usize {
 	return C.crypto_box_curve25519xsalsa20poly1305_beforenmbytes()
 }
 
-fn C.crypto_box_curve25519xsalsa20poly1305_noncebytes() size_t
+fn C.crypto_box_curve25519xsalsa20poly1305_noncebytes() usize
 
-pub fn crypto_box_curve25519xsalsa20poly1305_noncebytes() size_t {
+pub fn crypto_box_curve25519xsalsa20poly1305_noncebytes() usize {
 	return C.crypto_box_curve25519xsalsa20poly1305_noncebytes()
 }
 
-fn C.crypto_box_curve25519xsalsa20poly1305_zerobytes() size_t
+fn C.crypto_box_curve25519xsalsa20poly1305_zerobytes() usize
 
-pub fn crypto_box_curve25519xsalsa20poly1305_zerobytes() size_t {
+pub fn crypto_box_curve25519xsalsa20poly1305_zerobytes() usize {
 	return C.crypto_box_curve25519xsalsa20poly1305_zerobytes()
 }
 
-fn C.crypto_box_curve25519xsalsa20poly1305_boxzerobytes() size_t
+fn C.crypto_box_curve25519xsalsa20poly1305_boxzerobytes() usize
 
-pub fn crypto_box_curve25519xsalsa20poly1305_boxzerobytes() size_t {
+pub fn crypto_box_curve25519xsalsa20poly1305_boxzerobytes() usize {
 	return C.crypto_box_curve25519xsalsa20poly1305_boxzerobytes()
 }
 
-fn C.crypto_box_curve25519xsalsa20poly1305_macbytes() size_t
+fn C.crypto_box_curve25519xsalsa20poly1305_macbytes() usize
 
-pub fn crypto_box_curve25519xsalsa20poly1305_macbytes() size_t {
+pub fn crypto_box_curve25519xsalsa20poly1305_macbytes() usize {
 	return C.crypto_box_curve25519xsalsa20poly1305_macbytes()
 }
 
-fn C.crypto_box_curve25519xsalsa20poly1305_messagebytes_max() size_t
+fn C.crypto_box_curve25519xsalsa20poly1305_messagebytes_max() usize
 
-pub fn crypto_box_curve25519xsalsa20poly1305_messagebytes_max() size_t {
+pub fn crypto_box_curve25519xsalsa20poly1305_messagebytes_max() usize {
 	return C.crypto_box_curve25519xsalsa20poly1305_messagebytes_max()
 }
 
@@ -1781,45 +1781,45 @@ pub fn crypto_box_curve25519xchacha20poly1305_open_easy(m &byte, c &byte, clen u
 	return C.crypto_box_curve25519xchacha20poly1305_open_easy(m, c, clen, n, pk, sk)
 }
 
-fn C.crypto_box_curve25519xchacha20poly1305_seedbytes() size_t
+fn C.crypto_box_curve25519xchacha20poly1305_seedbytes() usize
 
-pub fn crypto_box_curve25519xchacha20poly1305_seedbytes() size_t {
+pub fn crypto_box_curve25519xchacha20poly1305_seedbytes() usize {
 	return C.crypto_box_curve25519xchacha20poly1305_seedbytes()
 }
 
-fn C.crypto_box_curve25519xchacha20poly1305_publickeybytes() size_t
+fn C.crypto_box_curve25519xchacha20poly1305_publickeybytes() usize
 
-pub fn crypto_box_curve25519xchacha20poly1305_publickeybytes() size_t {
+pub fn crypto_box_curve25519xchacha20poly1305_publickeybytes() usize {
 	return C.crypto_box_curve25519xchacha20poly1305_publickeybytes()
 }
 
-fn C.crypto_box_curve25519xchacha20poly1305_secretkeybytes() size_t
+fn C.crypto_box_curve25519xchacha20poly1305_secretkeybytes() usize
 
-pub fn crypto_box_curve25519xchacha20poly1305_secretkeybytes() size_t {
+pub fn crypto_box_curve25519xchacha20poly1305_secretkeybytes() usize {
 	return C.crypto_box_curve25519xchacha20poly1305_secretkeybytes()
 }
 
-fn C.crypto_box_curve25519xchacha20poly1305_beforenmbytes() size_t
+fn C.crypto_box_curve25519xchacha20poly1305_beforenmbytes() usize
 
-pub fn crypto_box_curve25519xchacha20poly1305_beforenmbytes() size_t {
+pub fn crypto_box_curve25519xchacha20poly1305_beforenmbytes() usize {
 	return C.crypto_box_curve25519xchacha20poly1305_beforenmbytes()
 }
 
-fn C.crypto_box_curve25519xchacha20poly1305_noncebytes() size_t
+fn C.crypto_box_curve25519xchacha20poly1305_noncebytes() usize
 
-pub fn crypto_box_curve25519xchacha20poly1305_noncebytes() size_t {
+pub fn crypto_box_curve25519xchacha20poly1305_noncebytes() usize {
 	return C.crypto_box_curve25519xchacha20poly1305_noncebytes()
 }
 
-fn C.crypto_box_curve25519xchacha20poly1305_macbytes() size_t
+fn C.crypto_box_curve25519xchacha20poly1305_macbytes() usize
 
-pub fn crypto_box_curve25519xchacha20poly1305_macbytes() size_t {
+pub fn crypto_box_curve25519xchacha20poly1305_macbytes() usize {
 	return C.crypto_box_curve25519xchacha20poly1305_macbytes()
 }
 
-fn C.crypto_box_curve25519xchacha20poly1305_messagebytes_max() size_t
+fn C.crypto_box_curve25519xchacha20poly1305_messagebytes_max() usize
 
-pub fn crypto_box_curve25519xchacha20poly1305_messagebytes_max() size_t {
+pub fn crypto_box_curve25519xchacha20poly1305_messagebytes_max() usize {
 	return C.crypto_box_curve25519xchacha20poly1305_messagebytes_max()
 }
 
@@ -1835,9 +1835,9 @@ pub fn crypto_box_curve25519xchacha20poly1305_seal_open(m &byte, c &byte, clen u
 	return C.crypto_box_curve25519xchacha20poly1305_seal_open(m, c, clen, pk, sk)
 }
 
-fn C.crypto_box_curve25519xchacha20poly1305_sealbytes() size_t
+fn C.crypto_box_curve25519xchacha20poly1305_sealbytes() usize
 
-pub fn crypto_box_curve25519xchacha20poly1305_sealbytes() size_t {
+pub fn crypto_box_curve25519xchacha20poly1305_sealbytes() usize {
 	return C.crypto_box_curve25519xchacha20poly1305_sealbytes()
 }
 
@@ -1889,33 +1889,33 @@ pub fn crypto_box_open(m &byte, c &byte, clen u64, n &byte, pk &byte, sk &byte) 
 	return C.crypto_box_open(m, c, clen, n, pk, sk)
 }
 
-fn C.sodium_bin2hex(hex &char, hex_maxlen size_t, bin &byte, bin_len size_t) &char
+fn C.sodium_bin2hex(hex &char, hex_maxlen usize, bin &byte, bin_len usize) &char
 
-pub fn sodium_bin2hex(hex &char, hex_maxlen size_t, bin &byte, bin_len size_t) &char {
+pub fn sodium_bin2hex(hex &char, hex_maxlen usize, bin &byte, bin_len usize) &char {
 	return &char(C.sodium_bin2hex(hex, hex_maxlen, bin, bin_len))
 }
 
-fn C.sodium_hex2bin(bin &byte, bin_maxlen size_t, hex &char, hex_len size_t, ignore &char, bin_len &size_t, hex_end &&char) int
+fn C.sodium_hex2bin(bin &byte, bin_maxlen usize, hex &char, hex_len usize, ignore &char, bin_len &usize, hex_end &&char) int
 
-pub fn sodium_hex2bin(bin &byte, bin_maxlen size_t, hex &char, hex_len size_t, ignore &char, bin_len &size_t, hex_end &&char) int {
+pub fn sodium_hex2bin(bin &byte, bin_maxlen usize, hex &char, hex_len usize, ignore &char, bin_len &usize, hex_end &&char) int {
 	return C.sodium_hex2bin(bin, bin_maxlen, hex, hex_len, ignore, bin_len, voidptr(hex_end))
 }
 
-fn C.sodium_base64_encoded_len(bin_len size_t, variant int) size_t
+fn C.sodium_base64_encoded_len(bin_len usize, variant int) usize
 
-pub fn sodium_base64_encoded_len(bin_len size_t, variant int) size_t {
+pub fn sodium_base64_encoded_len(bin_len usize, variant int) usize {
 	return C.sodium_base64_encoded_len(bin_len, variant)
 }
 
-fn C.sodium_bin2base64(b64 &char, b64_maxlen size_t, bin &byte, bin_len size_t, variant int) &char
+fn C.sodium_bin2base64(b64 &char, b64_maxlen usize, bin &byte, bin_len usize, variant int) &char
 
-pub fn sodium_bin2base64(b64 &char, b64_maxlen size_t, bin &byte, bin_len size_t, variant int) &char {
+pub fn sodium_bin2base64(b64 &char, b64_maxlen usize, bin &byte, bin_len usize, variant int) &char {
 	return &char(C.sodium_bin2base64(b64, b64_maxlen, bin, bin_len, variant))
 }
 
-fn C.sodium_base642bin(bin &byte, bin_maxlen size_t, b64 &char, b64_len size_t, ignore &char, bin_len &size_t, b64_end &&char, variant int) int
+fn C.sodium_base642bin(bin &byte, bin_maxlen usize, b64 &char, b64_len usize, ignore &char, bin_len &usize, b64_end &&char, variant int) int
 
-pub fn sodium_base642bin(bin &byte, bin_maxlen size_t, b64 &char, b64_len size_t, ignore &char, bin_len &size_t, b64_end &&char, variant int) int {
+pub fn sodium_base642bin(bin &byte, bin_maxlen usize, b64 &char, b64_len usize, ignore &char, bin_len &usize, b64_end &&char, variant int) int {
 	return C.sodium_base642bin(bin, bin_maxlen, b64, b64_len, ignore, bin_len, voidptr(b64_end),
 		variant)
 }
@@ -2023,75 +2023,75 @@ pub fn sodium_set_misuse_handler(handler fn ()) int {
 	return C.sodium_set_misuse_handler(handler)
 }
 
-fn C.sodium_memzero(pnt voidptr, len size_t)
+fn C.sodium_memzero(pnt voidptr, len usize)
 
-pub fn sodium_memzero(pnt voidptr, len size_t) {
+pub fn sodium_memzero(pnt voidptr, len usize) {
 	C.sodium_memzero(pnt, len)
 }
 
-fn C.sodium_stackzero(len size_t)
+fn C.sodium_stackzero(len usize)
 
-pub fn sodium_stackzero(len size_t) {
+pub fn sodium_stackzero(len usize) {
 	C.sodium_stackzero(len)
 }
 
-fn C.sodium_memcmp(b1_ voidptr, b2_ voidptr, len size_t) int
+fn C.sodium_memcmp(b1_ voidptr, b2_ voidptr, len usize) int
 
-pub fn sodium_memcmp(b1_ voidptr, b2_ voidptr, len size_t) int {
+pub fn sodium_memcmp(b1_ voidptr, b2_ voidptr, len usize) int {
 	return C.sodium_memcmp(b1_, b2_, len)
 }
 
-fn C.sodium_compare(b1_ &byte, b2_ &byte, len size_t) int
+fn C.sodium_compare(b1_ &byte, b2_ &byte, len usize) int
 
-pub fn sodium_compare(b1_ &byte, b2_ &byte, len size_t) int {
+pub fn sodium_compare(b1_ &byte, b2_ &byte, len usize) int {
 	return C.sodium_compare(b1_, b2_, len)
 }
 
-fn C.sodium_is_zero(n &byte, nlen size_t) int
+fn C.sodium_is_zero(n &byte, nlen usize) int
 
-pub fn sodium_is_zero(n &byte, nlen size_t) int {
+pub fn sodium_is_zero(n &byte, nlen usize) int {
 	return C.sodium_is_zero(n, nlen)
 }
 
-fn C.sodium_increment(n &byte, nlen size_t)
+fn C.sodium_increment(n &byte, nlen usize)
 
-pub fn sodium_increment(n &byte, nlen size_t) {
+pub fn sodium_increment(n &byte, nlen usize) {
 	C.sodium_increment(n, nlen)
 }
 
-fn C.sodium_add(a &byte, b &byte, len size_t)
+fn C.sodium_add(a &byte, b &byte, len usize)
 
-pub fn sodium_add(a &byte, b &byte, len size_t) {
+pub fn sodium_add(a &byte, b &byte, len usize) {
 	C.sodium_add(a, b, len)
 }
 
-fn C.sodium_sub(a &byte, b &byte, len size_t)
+fn C.sodium_sub(a &byte, b &byte, len usize)
 
-pub fn sodium_sub(a &byte, b &byte, len size_t) {
+pub fn sodium_sub(a &byte, b &byte, len usize) {
 	C.sodium_sub(a, b, len)
 }
 
-fn C.sodium_mlock(addr voidptr, len size_t) int
+fn C.sodium_mlock(addr voidptr, len usize) int
 
-pub fn sodium_mlock(addr voidptr, len size_t) int {
+pub fn sodium_mlock(addr voidptr, len usize) int {
 	return C.sodium_mlock(addr, len)
 }
 
-fn C.sodium_munlock(addr voidptr, len size_t) int
+fn C.sodium_munlock(addr voidptr, len usize) int
 
-pub fn sodium_munlock(addr voidptr, len size_t) int {
+pub fn sodium_munlock(addr voidptr, len usize) int {
 	return C.sodium_munlock(addr, len)
 }
 
-fn C.sodium_malloc(size size_t) voidptr
+fn C.sodium_malloc(size usize) voidptr
 
-pub fn sodium_malloc(size size_t) voidptr {
+pub fn sodium_malloc(size usize) voidptr {
 	return C.sodium_malloc(size)
 }
 
-fn C.sodium_allocarray(count size_t, size size_t) voidptr
+fn C.sodium_allocarray(count usize, size usize) voidptr
 
-pub fn sodium_allocarray(count size_t, size size_t) voidptr {
+pub fn sodium_allocarray(count usize, size usize) voidptr {
 	return C.sodium_allocarray(count, size)
 }
 
@@ -2119,15 +2119,15 @@ pub fn sodium_mprotect_readwrite(ptr voidptr) int {
 	return C.sodium_mprotect_readwrite(ptr)
 }
 
-fn C.sodium_pad(padded_buflen_p &size_t, buf &byte, unpadded_buflen size_t, blocksize size_t, max_buflen size_t) int
+fn C.sodium_pad(padded_buflen_p &usize, buf &byte, unpadded_buflen usize, blocksize usize, max_buflen usize) int
 
-pub fn sodium_pad(padded_buflen_p &size_t, buf &byte, unpadded_buflen size_t, blocksize size_t, max_buflen size_t) int {
+pub fn sodium_pad(padded_buflen_p &usize, buf &byte, unpadded_buflen usize, blocksize usize, max_buflen usize) int {
 	return C.sodium_pad(padded_buflen_p, buf, unpadded_buflen, blocksize, max_buflen)
 }
 
-fn C.sodium_unpad(unpadded_buflen_p &size_t, buf &byte, padded_buflen size_t, blocksize size_t) int
+fn C.sodium_unpad(unpadded_buflen_p &usize, buf &byte, padded_buflen usize, blocksize usize) int
 
-pub fn sodium_unpad(unpadded_buflen_p &size_t, buf &byte, padded_buflen size_t, blocksize size_t) int {
+pub fn sodium_unpad(unpadded_buflen_p &usize, buf &byte, padded_buflen usize, blocksize usize) int {
 	return C.sodium_unpad(unpadded_buflen_p, buf, padded_buflen, blocksize)
 }
 
@@ -2155,21 +2155,21 @@ pub fn sodium_library_minimal() int {
 	return C.sodium_library_minimal()
 }
 
-fn C.crypto_stream_xchacha20_keybytes() size_t
+fn C.crypto_stream_xchacha20_keybytes() usize
 
-pub fn crypto_stream_xchacha20_keybytes() size_t {
+pub fn crypto_stream_xchacha20_keybytes() usize {
 	return C.crypto_stream_xchacha20_keybytes()
 }
 
-fn C.crypto_stream_xchacha20_noncebytes() size_t
+fn C.crypto_stream_xchacha20_noncebytes() usize
 
-pub fn crypto_stream_xchacha20_noncebytes() size_t {
+pub fn crypto_stream_xchacha20_noncebytes() usize {
 	return C.crypto_stream_xchacha20_noncebytes()
 }
 
-fn C.crypto_stream_xchacha20_messagebytes_max() size_t
+fn C.crypto_stream_xchacha20_messagebytes_max() usize
 
-pub fn crypto_stream_xchacha20_messagebytes_max() size_t {
+pub fn crypto_stream_xchacha20_messagebytes_max() usize {
 	return C.crypto_stream_xchacha20_messagebytes_max()
 }
 
@@ -2386,33 +2386,33 @@ pub fn crypto_aead_xchacha20poly1305_ietf_decrypt(m &byte, mlen_p &u64, nsec &by
 		clen, ad, adlen, npub, k)
 }
 
-fn C.crypto_aead_xchacha20poly1305_ietf_keybytes() size_t
+fn C.crypto_aead_xchacha20poly1305_ietf_keybytes() usize
 
-pub fn crypto_aead_xchacha20poly1305_ietf_keybytes() size_t {
+pub fn crypto_aead_xchacha20poly1305_ietf_keybytes() usize {
 	return C.crypto_aead_xchacha20poly1305_ietf_keybytes()
 }
 
-fn C.crypto_aead_xchacha20poly1305_ietf_npubbytes() size_t
+fn C.crypto_aead_xchacha20poly1305_ietf_npubbytes() usize
 
-pub fn crypto_aead_xchacha20poly1305_ietf_npubbytes() size_t {
+pub fn crypto_aead_xchacha20poly1305_ietf_npubbytes() usize {
 	return C.crypto_aead_xchacha20poly1305_ietf_npubbytes()
 }
 
-fn C.crypto_aead_xchacha20poly1305_ietf_nsecbytes() size_t
+fn C.crypto_aead_xchacha20poly1305_ietf_nsecbytes() usize
 
-pub fn crypto_aead_xchacha20poly1305_ietf_nsecbytes() size_t {
+pub fn crypto_aead_xchacha20poly1305_ietf_nsecbytes() usize {
 	return C.crypto_aead_xchacha20poly1305_ietf_nsecbytes()
 }
 
-fn C.crypto_aead_xchacha20poly1305_ietf_abytes() size_t
+fn C.crypto_aead_xchacha20poly1305_ietf_abytes() usize
 
-pub fn crypto_aead_xchacha20poly1305_ietf_abytes() size_t {
+pub fn crypto_aead_xchacha20poly1305_ietf_abytes() usize {
 	return C.crypto_aead_xchacha20poly1305_ietf_abytes()
 }
 
-fn C.crypto_aead_xchacha20poly1305_ietf_messagebytes_max() size_t
+fn C.crypto_aead_xchacha20poly1305_ietf_messagebytes_max() usize
 
-pub fn crypto_aead_xchacha20poly1305_ietf_messagebytes_max() size_t {
+pub fn crypto_aead_xchacha20poly1305_ietf_messagebytes_max() usize {
 	return C.crypto_aead_xchacha20poly1305_ietf_messagebytes_max()
 }
 
@@ -2450,39 +2450,39 @@ pub fn crypto_aead_aes256gcm_is_available() int {
 	return C.crypto_aead_aes256gcm_is_available()
 }
 
-fn C.crypto_aead_aes256gcm_keybytes() size_t
+fn C.crypto_aead_aes256gcm_keybytes() usize
 
-pub fn crypto_aead_aes256gcm_keybytes() size_t {
+pub fn crypto_aead_aes256gcm_keybytes() usize {
 	return C.crypto_aead_aes256gcm_keybytes()
 }
 
-fn C.crypto_aead_aes256gcm_nsecbytes() size_t
+fn C.crypto_aead_aes256gcm_nsecbytes() usize
 
-pub fn crypto_aead_aes256gcm_nsecbytes() size_t {
+pub fn crypto_aead_aes256gcm_nsecbytes() usize {
 	return C.crypto_aead_aes256gcm_nsecbytes()
 }
 
-fn C.crypto_aead_aes256gcm_npubbytes() size_t
+fn C.crypto_aead_aes256gcm_npubbytes() usize
 
-pub fn crypto_aead_aes256gcm_npubbytes() size_t {
+pub fn crypto_aead_aes256gcm_npubbytes() usize {
 	return C.crypto_aead_aes256gcm_npubbytes()
 }
 
-fn C.crypto_aead_aes256gcm_abytes() size_t
+fn C.crypto_aead_aes256gcm_abytes() usize
 
-pub fn crypto_aead_aes256gcm_abytes() size_t {
+pub fn crypto_aead_aes256gcm_abytes() usize {
 	return C.crypto_aead_aes256gcm_abytes()
 }
 
-fn C.crypto_aead_aes256gcm_statebytes() size_t
+fn C.crypto_aead_aes256gcm_statebytes() usize
 
-pub fn crypto_aead_aes256gcm_statebytes() size_t {
+pub fn crypto_aead_aes256gcm_statebytes() usize {
 	return C.crypto_aead_aes256gcm_statebytes()
 }
 
-fn C.crypto_aead_aes256gcm_messagebytes_max() size_t
+fn C.crypto_aead_aes256gcm_messagebytes_max() usize
 
-pub fn crypto_aead_aes256gcm_messagebytes_max() size_t {
+pub fn crypto_aead_aes256gcm_messagebytes_max() usize {
 	return C.crypto_aead_aes256gcm_messagebytes_max()
 }
 
@@ -2542,93 +2542,93 @@ pub fn crypto_aead_chacha20poly1305_ietf_decrypt(m &byte, mlen_p &u64, nsec &byt
 		clen, ad, adlen, npub, k)
 }
 
-fn C.crypto_aead_chacha20poly1305_ietf_keybytes() size_t
+fn C.crypto_aead_chacha20poly1305_ietf_keybytes() usize
 
-pub fn crypto_aead_chacha20poly1305_ietf_keybytes() size_t {
+pub fn crypto_aead_chacha20poly1305_ietf_keybytes() usize {
 	return C.crypto_aead_chacha20poly1305_ietf_keybytes()
 }
 
-fn C.crypto_aead_chacha20poly1305_ietf_npubbytes() size_t
+fn C.crypto_aead_chacha20poly1305_ietf_npubbytes() usize
 
-pub fn crypto_aead_chacha20poly1305_ietf_npubbytes() size_t {
+pub fn crypto_aead_chacha20poly1305_ietf_npubbytes() usize {
 	return C.crypto_aead_chacha20poly1305_ietf_npubbytes()
 }
 
-fn C.crypto_aead_chacha20poly1305_ietf_nsecbytes() size_t
+fn C.crypto_aead_chacha20poly1305_ietf_nsecbytes() usize
 
-pub fn crypto_aead_chacha20poly1305_ietf_nsecbytes() size_t {
+pub fn crypto_aead_chacha20poly1305_ietf_nsecbytes() usize {
 	return C.crypto_aead_chacha20poly1305_ietf_nsecbytes()
 }
 
-fn C.crypto_aead_chacha20poly1305_ietf_abytes() size_t
+fn C.crypto_aead_chacha20poly1305_ietf_abytes() usize
 
-pub fn crypto_aead_chacha20poly1305_ietf_abytes() size_t {
+pub fn crypto_aead_chacha20poly1305_ietf_abytes() usize {
 	return C.crypto_aead_chacha20poly1305_ietf_abytes()
 }
 
-fn C.crypto_aead_chacha20poly1305_ietf_messagebytes_max() size_t
+fn C.crypto_aead_chacha20poly1305_ietf_messagebytes_max() usize
 
-pub fn crypto_aead_chacha20poly1305_ietf_messagebytes_max() size_t {
+pub fn crypto_aead_chacha20poly1305_ietf_messagebytes_max() usize {
 	return C.crypto_aead_chacha20poly1305_ietf_messagebytes_max()
 }
 
-fn C.crypto_aead_chacha20poly1305_keybytes() size_t
+fn C.crypto_aead_chacha20poly1305_keybytes() usize
 
-pub fn crypto_aead_chacha20poly1305_keybytes() size_t {
+pub fn crypto_aead_chacha20poly1305_keybytes() usize {
 	return C.crypto_aead_chacha20poly1305_keybytes()
 }
 
-fn C.crypto_aead_chacha20poly1305_npubbytes() size_t
+fn C.crypto_aead_chacha20poly1305_npubbytes() usize
 
-pub fn crypto_aead_chacha20poly1305_npubbytes() size_t {
+pub fn crypto_aead_chacha20poly1305_npubbytes() usize {
 	return C.crypto_aead_chacha20poly1305_npubbytes()
 }
 
-fn C.crypto_aead_chacha20poly1305_nsecbytes() size_t
+fn C.crypto_aead_chacha20poly1305_nsecbytes() usize
 
-pub fn crypto_aead_chacha20poly1305_nsecbytes() size_t {
+pub fn crypto_aead_chacha20poly1305_nsecbytes() usize {
 	return C.crypto_aead_chacha20poly1305_nsecbytes()
 }
 
-fn C.crypto_aead_chacha20poly1305_abytes() size_t
+fn C.crypto_aead_chacha20poly1305_abytes() usize
 
-pub fn crypto_aead_chacha20poly1305_abytes() size_t {
+pub fn crypto_aead_chacha20poly1305_abytes() usize {
 	return C.crypto_aead_chacha20poly1305_abytes()
 }
 
-fn C.crypto_aead_chacha20poly1305_messagebytes_max() size_t
+fn C.crypto_aead_chacha20poly1305_messagebytes_max() usize
 
-pub fn crypto_aead_chacha20poly1305_messagebytes_max() size_t {
+pub fn crypto_aead_chacha20poly1305_messagebytes_max() usize {
 	return C.crypto_aead_chacha20poly1305_messagebytes_max()
 }
 
-fn C.crypto_secretstream_xchacha20poly1305_statebytes() size_t
+fn C.crypto_secretstream_xchacha20poly1305_statebytes() usize
 
-pub fn crypto_secretstream_xchacha20poly1305_statebytes() size_t {
+pub fn crypto_secretstream_xchacha20poly1305_statebytes() usize {
 	return C.crypto_secretstream_xchacha20poly1305_statebytes()
 }
 
-fn C.crypto_secretstream_xchacha20poly1305_abytes() size_t
+fn C.crypto_secretstream_xchacha20poly1305_abytes() usize
 
-pub fn crypto_secretstream_xchacha20poly1305_abytes() size_t {
+pub fn crypto_secretstream_xchacha20poly1305_abytes() usize {
 	return C.crypto_secretstream_xchacha20poly1305_abytes()
 }
 
-fn C.crypto_secretstream_xchacha20poly1305_headerbytes() size_t
+fn C.crypto_secretstream_xchacha20poly1305_headerbytes() usize
 
-pub fn crypto_secretstream_xchacha20poly1305_headerbytes() size_t {
+pub fn crypto_secretstream_xchacha20poly1305_headerbytes() usize {
 	return C.crypto_secretstream_xchacha20poly1305_headerbytes()
 }
 
-fn C.crypto_secretstream_xchacha20poly1305_keybytes() size_t
+fn C.crypto_secretstream_xchacha20poly1305_keybytes() usize
 
-pub fn crypto_secretstream_xchacha20poly1305_keybytes() size_t {
+pub fn crypto_secretstream_xchacha20poly1305_keybytes() usize {
 	return C.crypto_secretstream_xchacha20poly1305_keybytes()
 }
 
-fn C.crypto_secretstream_xchacha20poly1305_messagebytes_max() size_t
+fn C.crypto_secretstream_xchacha20poly1305_messagebytes_max() usize
 
-pub fn crypto_secretstream_xchacha20poly1305_messagebytes_max() size_t {
+pub fn crypto_secretstream_xchacha20poly1305_messagebytes_max() usize {
 	return C.crypto_secretstream_xchacha20poly1305_messagebytes_max()
 }
 
@@ -2662,27 +2662,27 @@ pub fn crypto_core_salsa20(out &byte, in_ &byte, k &byte, c &byte) int {
 	return C.crypto_core_salsa20(out, in_, k, c)
 }
 
-fn C.crypto_core_salsa20_outputbytes() size_t
+fn C.crypto_core_salsa20_outputbytes() usize
 
-pub fn crypto_core_salsa20_outputbytes() size_t {
+pub fn crypto_core_salsa20_outputbytes() usize {
 	return C.crypto_core_salsa20_outputbytes()
 }
 
-fn C.crypto_core_salsa20_inputbytes() size_t
+fn C.crypto_core_salsa20_inputbytes() usize
 
-pub fn crypto_core_salsa20_inputbytes() size_t {
+pub fn crypto_core_salsa20_inputbytes() usize {
 	return C.crypto_core_salsa20_inputbytes()
 }
 
-fn C.crypto_core_salsa20_keybytes() size_t
+fn C.crypto_core_salsa20_keybytes() usize
 
-pub fn crypto_core_salsa20_keybytes() size_t {
+pub fn crypto_core_salsa20_keybytes() usize {
 	return C.crypto_core_salsa20_keybytes()
 }
 
-fn C.crypto_core_salsa20_constbytes() size_t
+fn C.crypto_core_salsa20_constbytes() usize
 
-pub fn crypto_core_salsa20_constbytes() size_t {
+pub fn crypto_core_salsa20_constbytes() usize {
 	return C.crypto_core_salsa20_constbytes()
 }
 
@@ -2692,27 +2692,27 @@ pub fn crypto_core_salsa2012(out &byte, in_ &byte, k &byte, c &byte) int {
 	return C.crypto_core_salsa2012(out, in_, k, c)
 }
 
-fn C.crypto_core_salsa2012_outputbytes() size_t
+fn C.crypto_core_salsa2012_outputbytes() usize
 
-pub fn crypto_core_salsa2012_outputbytes() size_t {
+pub fn crypto_core_salsa2012_outputbytes() usize {
 	return C.crypto_core_salsa2012_outputbytes()
 }
 
-fn C.crypto_core_salsa2012_inputbytes() size_t
+fn C.crypto_core_salsa2012_inputbytes() usize
 
-pub fn crypto_core_salsa2012_inputbytes() size_t {
+pub fn crypto_core_salsa2012_inputbytes() usize {
 	return C.crypto_core_salsa2012_inputbytes()
 }
 
-fn C.crypto_core_salsa2012_keybytes() size_t
+fn C.crypto_core_salsa2012_keybytes() usize
 
-pub fn crypto_core_salsa2012_keybytes() size_t {
+pub fn crypto_core_salsa2012_keybytes() usize {
 	return C.crypto_core_salsa2012_keybytes()
 }
 
-fn C.crypto_core_salsa2012_constbytes() size_t
+fn C.crypto_core_salsa2012_constbytes() usize
 
-pub fn crypto_core_salsa2012_constbytes() size_t {
+pub fn crypto_core_salsa2012_constbytes() usize {
 	return C.crypto_core_salsa2012_constbytes()
 }
 
@@ -2752,27 +2752,27 @@ pub fn crypto_core_hchacha20(out &byte, in_ &byte, k &byte, c &byte) int {
 	return C.crypto_core_hchacha20(out, in_, k, c)
 }
 
-fn C.crypto_core_hchacha20_outputbytes() size_t
+fn C.crypto_core_hchacha20_outputbytes() usize
 
-pub fn crypto_core_hchacha20_outputbytes() size_t {
+pub fn crypto_core_hchacha20_outputbytes() usize {
 	return C.crypto_core_hchacha20_outputbytes()
 }
 
-fn C.crypto_core_hchacha20_inputbytes() size_t
+fn C.crypto_core_hchacha20_inputbytes() usize
 
-pub fn crypto_core_hchacha20_inputbytes() size_t {
+pub fn crypto_core_hchacha20_inputbytes() usize {
 	return C.crypto_core_hchacha20_inputbytes()
 }
 
-fn C.crypto_core_hchacha20_keybytes() size_t
+fn C.crypto_core_hchacha20_keybytes() usize
 
-pub fn crypto_core_hchacha20_keybytes() size_t {
+pub fn crypto_core_hchacha20_keybytes() usize {
 	return C.crypto_core_hchacha20_keybytes()
 }
 
-fn C.crypto_core_hchacha20_constbytes() size_t
+fn C.crypto_core_hchacha20_constbytes() usize
 
-pub fn crypto_core_hchacha20_constbytes() size_t {
+pub fn crypto_core_hchacha20_constbytes() usize {
 	return C.crypto_core_hchacha20_constbytes()
 }
 
@@ -2842,27 +2842,27 @@ pub fn crypto_core_ed25519_scalar_sub(z &byte, x &byte, y &byte) {
 	C.crypto_core_ed25519_scalar_sub(z, x, y)
 }
 
-fn C.crypto_core_ed25519_bytes() size_t
+fn C.crypto_core_ed25519_bytes() usize
 
-pub fn crypto_core_ed25519_bytes() size_t {
+pub fn crypto_core_ed25519_bytes() usize {
 	return C.crypto_core_ed25519_bytes()
 }
 
-fn C.crypto_core_ed25519_nonreducedscalarbytes() size_t
+fn C.crypto_core_ed25519_nonreducedscalarbytes() usize
 
-pub fn crypto_core_ed25519_nonreducedscalarbytes() size_t {
+pub fn crypto_core_ed25519_nonreducedscalarbytes() usize {
 	return C.crypto_core_ed25519_nonreducedscalarbytes()
 }
 
-fn C.crypto_core_ed25519_uniformbytes() size_t
+fn C.crypto_core_ed25519_uniformbytes() usize
 
-pub fn crypto_core_ed25519_uniformbytes() size_t {
+pub fn crypto_core_ed25519_uniformbytes() usize {
 	return C.crypto_core_ed25519_uniformbytes()
 }
 
-fn C.crypto_core_ed25519_scalarbytes() size_t
+fn C.crypto_core_ed25519_scalarbytes() usize
 
-pub fn crypto_core_ed25519_scalarbytes() size_t {
+pub fn crypto_core_ed25519_scalarbytes() usize {
 	return C.crypto_core_ed25519_scalarbytes()
 }
 
