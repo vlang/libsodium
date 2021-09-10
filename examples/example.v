@@ -36,7 +36,7 @@ fn perftest() {
 	box := libsodium.new_secret_box('key')
 	cat := 'symmetric encryption'
 	nr := 1000000
-	mut sw := time.new_stopwatch({})
+	mut sw := time.new_stopwatch()
 	sw.start()
 	for _ in 0 .. nr {
 		encrypted := box.encrypt_string('hello')
@@ -56,7 +56,7 @@ fn perftest2() {
 	data := strings.repeat_string('a', 10 * 1024) // 10kb
 	cat := 'asymm encryption'
 	nr := 10000
-	mut sw := time.new_stopwatch({})
+	mut sw := time.new_stopwatch()
 	sw.start()
 	for _ in 0 .. nr {
 		bob_box := libsodium.new_box(key_bob, key_alice.public_key)
