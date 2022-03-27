@@ -1030,8 +1030,8 @@ type escrypt_kdf_t = fn (&escrypt_local_t, &byte, size_t, &byte, size_t, u64, u3
 // ['referenced', 'escrypt_region_t', 'struct escrypt_region_t:escrypt_region_t']
 fn C.crypto_pwhash_scryptsalsa208sha256_ll(passwd &byte, passwdlen usize, salt &byte, saltlen usize, N u64, r u32, p u32, buf &byte, buflen usize) int
 
-pub fn crypto_pwhash_scryptsalsa208sha256_ll(passwd &byte, passwdlen usize, salt &byte, saltlen usize, N u64, r u32, p u32, buf &byte, buflen usize) int {
-	return C.crypto_pwhash_scryptsalsa208sha256_ll(passwd, passwdlen, salt, saltlen, N,
+pub fn crypto_pwhash_scryptsalsa208sha256_ll(passwd &byte, passwdlen usize, salt &byte, saltlen usize, n u64, r u32, p u32, buf &byte, buflen usize) int {
+	return C.crypto_pwhash_scryptsalsa208sha256_ll(passwd, passwdlen, salt, saltlen, n,
 		r, p, buf, buflen)
 }
 
