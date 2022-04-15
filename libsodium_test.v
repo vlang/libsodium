@@ -28,9 +28,9 @@ fn test_secret_box() {
 	dec2 := box.decrypt_string(enc2)
 	assert dec2 == '123456'
 	//
-	enc3 := box.encrypt([byte(0), 1, 2, 3])
+	enc3 := box.encrypt([u8(0), 1, 2, 3])
 	dec3 := box.decrypt(enc3)
-	assert dec3 == [byte(0), 1, 2, 3]
+	assert dec3 == [u8(0), 1, 2, 3]
 }
 
 fn test_private_key() {
