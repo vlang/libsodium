@@ -276,6 +276,12 @@ pub fn crypto_secretbox_xsalsa20poly1305(c &u8, m &u8, mlen u64, n &u8, k &u8) i
 	return C.crypto_secretbox_xsalsa20poly1305(c, m, mlen, n, k)
 }
 
+fn C.crypto_secretbox_macbytes() usize
+
+pub fn crypto_secretbox_macbytes() usize {
+	return C.crypto_secretbox_macbytes()
+}
+
 fn C.crypto_secretbox_xsalsa20poly1305_open(m &u8, c &u8, clen u64, n &u8, k &u8) int
 
 pub fn crypto_secretbox_xsalsa20poly1305_open(m &u8, c &u8, clen u64, n &u8, k &u8) int {
@@ -312,6 +318,12 @@ pub fn crypto_secretbox_xchacha20poly1305_keybytes() usize {
 	return C.crypto_secretbox_xchacha20poly1305_keybytes()
 }
 
+fn C.crypto_box_noncebytes() usize
+
+pub fn crypto_box_noncebytes() usize {
+	return C.crypto_box_noncebytes()
+}
+
 fn C.crypto_secretbox_xchacha20poly1305_noncebytes() usize
 
 pub fn crypto_secretbox_xchacha20poly1305_noncebytes() usize {
@@ -322,6 +334,12 @@ fn C.crypto_secretbox_xchacha20poly1305_macbytes() usize
 
 pub fn crypto_secretbox_xchacha20poly1305_macbytes() usize {
 	return C.crypto_secretbox_xchacha20poly1305_macbytes()
+}
+
+fn C.crypto_box_messagebytes_max() usize
+
+pub fn crypto_box_messagebytes_max() usize {
+	return C.crypto_box_messagebytes_max()
 }
 
 fn C.crypto_secretbox_xchacha20poly1305_messagebytes_max() usize
@@ -2864,6 +2882,13 @@ fn C.crypto_core_ed25519_scalarbytes() usize
 
 pub fn crypto_core_ed25519_scalarbytes() usize {
 	return C.crypto_core_ed25519_scalarbytes()
+}
+
+
+fn C.crypto_secretbox_keybytes() usize
+
+pub fn crypto_secretbox_keybytes() usize {
+	return C.crypto_secretbox_keybytes()
 }
 
 fn C.crypto_secretbox_keygen(&u8)
