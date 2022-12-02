@@ -39,4 +39,4 @@ jobs:
       run: v -cstrict ~/.vmodules/libsodium/examples/example.v
 
     - name: Build example with -prod
-      run: v -cc gcc -cstrict -prod ~/.vmodules/libsodium/examples/example.v
+      run: v -cc clang -cstrict -prod ~/.vmodules/libsodium/examples/example.v
