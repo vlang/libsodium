@@ -28,9 +28,9 @@ decrypted := box.decrypt_string(encrypted)
 assert decrypted == 'hello'
 println(decrypted)
 
-encrypted_bytes := box.encrypt([byte(0), 1, 2, 3])
+encrypted_bytes := box.encrypt([u8(0), 1, 2, 3])
 decrypted_bytes := box.decrypt(encrypted_bytes)
-assert decrypted_bytes == [byte(0), 1, 2, 3]
+assert decrypted_bytes == [u8(0), 1, 2, 3]
 
 // Public-key cryptography:
 key_alice := libsodium.new_private_key()
@@ -52,8 +52,6 @@ v run libsodium_test.v
 
 ```bash
 2568688128
-hello
-hello
 nr of ms for 1million iterations: 820 for test symmetric encryption
 nr iterations per sec for symmetric encryption: 1219000
 nr of ms for 10thousand iterations: 1413 for test asymm encryption
