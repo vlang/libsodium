@@ -2884,7 +2884,6 @@ pub fn crypto_core_ed25519_scalarbytes() usize {
 	return C.crypto_core_ed25519_scalarbytes()
 }
 
-
 fn C.crypto_secretbox_keybytes() usize
 
 pub fn crypto_secretbox_keybytes() usize {
