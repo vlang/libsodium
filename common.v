@@ -36,8 +36,8 @@ pub fn hash_password_argon2id13(key_len usize, clear_text_password string, salt 
 
 	result := []u8{len: int(key_len)}
 
-	if clear_text_password.len < libsodium.crypto_pwhash_passwd_min
-		|| clear_text_password.len > libsodium.crypto_pwhash_passwd_max {
+	if u64(clear_text_password.len) < libsodium.crypto_pwhash_passwd_min
+		|| u64(clear_text_password.len) > libsodium.crypto_pwhash_passwd_max {
 		return error('clear_text_password length is out of bounds')
 	}
 
