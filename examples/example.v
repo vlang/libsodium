@@ -44,9 +44,9 @@ fn perftest() {
 	}
 	sw.stop()
 	time_ms := sw.elapsed().milliseconds()
-	println('nr of ms for ${nr / 1000000}million iterations: $time_ms for test $cat')
+	println('nr of ms for ${nr / 1000000}million iterations: ${time_ms} for test ${cat}')
 	nr_iterations_per_msec := nr / time_ms * 1000
-	println('nr iterations per sec for $cat: $nr_iterations_per_msec')
+	println('nr iterations per sec for ${cat}: ${nr_iterations_per_msec}')
 }
 
 fn perftest2() {
@@ -66,9 +66,9 @@ fn perftest2() {
 	}
 	sw.stop()
 	time_ms := sw.elapsed().milliseconds()
-	println('nr of ms for ${nr / 1000}thousand iterations: $time_ms for test $cat')
+	println('nr of ms for ${nr / 1000}thousand iterations: ${time_ms} for test ${cat}')
 	nr_iterations_per_msec := nr / time_ms * 1000
-	println('nr iterations per sec for $cat: $nr_iterations_per_msec')
+	println('nr iterations per sec for ${cat}: ${nr_iterations_per_msec}')
 }
 
 fn main() {
