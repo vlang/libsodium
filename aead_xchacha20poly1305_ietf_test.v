@@ -1,12 +1,11 @@
-import libsodium
-import libsodium_extensions as cmn
-import libsodium_extensions.aead.xchacha20poly1305_ietf as aeadmod
+module main
 
-fn testsuite_begin() ! {
-	assert libsodium.sodium_init() >= 0
-}
+import libsodium
+import aead.xchacha20poly1305_ietf as aeadmod
 
 fn test_aead_xchacha20poly1305_without_additional_data_ietf_happy_path_works() {
+	assert libsodium.sodium_init() >= 0
+
 	hashed_passwd := aeadmod.hash_password("password123", .moderate)!
 
 	in_clear_text_to_encrypt := "sdfjkldf2579023590"
@@ -18,8 +17,10 @@ fn test_aead_xchacha20poly1305_without_additional_data_ietf_happy_path_works() {
 }
 
 fn test_aead_xchacha20poly1305_without_additional_data_ietf_verify() {
+	assert libsodium.sodium_init() >= 0
+
 	hashed_passwd := aeadmod.HashedPassword {
-		salt: cmn.SaltForArgon2id13 { salt_array:[u8(32), 49, 81, 185, 28, 171, 144, 185, 249, 150, 217, 153, 211, 255, 2, 163] },
+		salt: libsodium.SaltForArgon2id13 { salt_array:[u8(32), 49, 81, 185, 28, 171, 144, 185, 249, 150, 217, 153, 211, 255, 2, 163] },
     	hash_array: [u8(22), 83, 129, 79, 7, 98, 192, 31, 20, 103, 139, 131, 103, 151, 242, 13, 247, 49, 151, 32, 5, 237, 150, 89, 124, 143, 211, 77, 154, 172, 150, 42]
 	}
 	
@@ -41,8 +42,10 @@ fn test_aead_xchacha20poly1305_without_additional_data_ietf_verify() {
 }
 
 fn test_aead_xchacha20poly1305_with_additional_data_ietf_verify() {
+	assert libsodium.sodium_init() >= 0
+
 	hashed_passwd := aeadmod.HashedPassword {
-		salt: cmn.SaltForArgon2id13 { salt_array:[u8(32), 49, 81, 185, 28, 171, 144, 185, 249, 150, 217, 153, 211, 255, 2, 163] },
+		salt: libsodium.SaltForArgon2id13 { salt_array:[u8(32), 49, 81, 185, 28, 171, 144, 185, 249, 150, 217, 153, 211, 255, 2, 163] },
     	hash_array: [u8(22), 83, 129, 79, 7, 98, 192, 31, 20, 103, 139, 131, 103, 151, 242, 13, 247, 49, 151, 32, 5, 237, 150, 89, 124, 143, 211, 77, 154, 172, 150, 42]
 	}
 	
@@ -64,6 +67,8 @@ fn test_aead_xchacha20poly1305_with_additional_data_ietf_verify() {
 }
 
 fn test_aead_xchacha20poly1305_without_additional_data_tampering_detection_works() ! {
+	assert libsodium.sodium_init() >= 0
+
 	hashed_passwd := aeadmod.hash_password("password123", .moderate)!
 
 	in_clear_text_to_encrypt := "sdfjkldf2579023590"
@@ -90,6 +95,8 @@ fn test_aead_xchacha20poly1305_without_additional_data_tampering_detection_works
 }
 
 fn test_aead_xchacha20poly1305_with_additional_data_ietf_happy_path_works() {
+	assert libsodium.sodium_init() >= 0
+
 	additional_data_needed_for_decription := "something".bytes()
 	hashed_passwd := aeadmod.hash_password("password123", .moderate)!
 
@@ -101,6 +108,8 @@ fn test_aead_xchacha20poly1305_with_additional_data_ietf_happy_path_works() {
 }
 
 fn test_aead_xchacha20poly1305_with_additional_data_tampering_detection_works_for_corrupted_messages() ! {
+	assert libsodium.sodium_init() >= 0
+
 	additional_data_needed_for_decription := "something".bytes()
 	hashed_passwd := aeadmod.hash_password("password123", .moderate)!
 
@@ -128,6 +137,8 @@ fn test_aead_xchacha20poly1305_with_additional_data_tampering_detection_works_fo
 }
 
 fn test_aead_xchacha20poly1305_with_additional_data_tampering_detection_works_for_corrupted_additional_data() ! {
+	assert libsodium.sodium_init() >= 0
+
 	hashed_passwd := aeadmod.hash_password("password123", .moderate)!
 
 	in_clear_text_to_encrypt := "sdfjkldf2579023590"

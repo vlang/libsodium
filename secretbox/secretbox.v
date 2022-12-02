@@ -1,8 +1,7 @@
 module secretbox
 
-import libsodium
 import math
-import libsodium_extensions
+import libsodium
 
 const (
 	crypto_secretbox_keybytes = libsodium.crypto_secretbox_keybytes()
@@ -22,7 +21,7 @@ pub struct Nonce {
 //hashing and salting is crucial. Passwords that are not hashed are not utilizing whole range of key values. Salting prevents practical dictionary attacks.
 pub struct HashedPassword {
 	pub:
-		salt libsodium_extensions.SaltForArgon2id13
+		salt libsodium.SaltForArgon2id13
 		hash_array []u8
 }
 
@@ -32,17 +31,17 @@ pub struct Encrypted {
 		nonce Nonce
 }
 
-pub fn hash_password_full(clear_text_password string, salt libsodium_extensions.SaltForArgon2id13, limit libsodium_extensions.PwHashLimit) !HashedPassword {
+pub fn hash_password_full(clear_text_password string, salt libsodium.SaltForArgon2id13, limit libsodium.PwHashLimit) !HashedPassword {
 	key_len := crypto_secretbox_keybytes
 
 	return HashedPassword{
-		hash_array:libsodium_extensions.hash_password_argon2id13(key_len, clear_text_password, salt, limit)!,
+		hash_array:libsodium.hash_password_argon2id13(key_len, clear_text_password, salt, limit)!,
 		salt:salt
 	}
 }
 
-pub fn hash_password(clear_text_password string, limit libsodium_extensions.PwHashLimit) !HashedPassword {
-	salt := libsodium_extensions.build_random_salt_argon2id13()!
+pub fn hash_password(clear_text_password string, limit libsodium.PwHashLimit) !HashedPassword {
+	salt := libsodium.build_random_salt_argon2id13()!
 	return hash_password_full(clear_text_password, salt, limit)
 }
 

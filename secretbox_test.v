@@ -1,32 +1,34 @@
-import libsodium
-import libsodium_extensions.secretbox as sb
-import libsodium_extensions as cmn
+module main
 
-fn testsuite_begin() ! {
-	assert libsodium.sodium_init() >= 0
-}
+import secretbox as sb
+import libsodium
 
 fn test_crypto_pwhash_is_not_an_empty_operation() {
-	
+	assert libsodium.sodium_init() >= 0
+
 	in_clear_text_passwd := "password123"
 	hashed := sb.hash_password(in_clear_text_passwd, .moderate)! 
 		
 	assert in_clear_text_passwd.bytes().hex() != hashed.hash_array.hex()
 }
 
-fn test_crypto_pwhash_verify() {	
+fn test_crypto_pwhash_verify() {
+	assert libsodium.sodium_init() >= 0
+
 	in_clear_text_passwd := "password123"
 
-	salt := cmn.SaltForArgon2id13{[ u8(110), 131, 121, 20, 151, 201, 189, 39, 109, 5, 8, 245, 109, 92, 50, 100]}
+	salt := libsodium.SaltForArgon2id13{[ u8(110), 131, 121, 20, 151, 201, 189, 39, 109, 5, 8, 245, 109, 92, 50, 100]}
 	hashed := sb.hash_password_full(in_clear_text_passwd, salt, .moderate)! 	
 	expected_hash := [u8(231), 217, 242, 140, 112, 55, 255, 165, 151, 43, 209, 26, 82, 157, 179, 8, 123, 37, 55, 136, 32, 167, 206, 56, 249, 243, 116, 94, 36, 142, 94, 148]	
  	assert expected_hash == hashed.hash_array
 }
 
 fn test_authenticated_encryption_aka_secretbox_verify() ! {
+	assert libsodium.sodium_init() >= 0
+
 	to_be_encrypted := "12345678901234567890abcdefghijklmn"
 	hashed_password := sb.HashedPassword {
-		salt: cmn.SaltForArgon2id13{ 
+		salt: libsodium.SaltForArgon2id13{ 
 			salt_array:[u8(159), 144, 43, 172, 175, 238, 204, 169, 84, 188, 123, 10, 50, 139, 21, 151] },
     	hash_array: [u8(87), 229, 87, 254, 224, 20, 76, 218, 20, 190, 43, 139, 111, 109, 170, 216, 27, 209, 54, 223, 200, 219, 157, 213, 193, 92, 22, 120, 69, 103, 39, 151]
 	}
@@ -44,6 +46,8 @@ fn test_authenticated_encryption_aka_secretbox_verify() ! {
 }
 
 fn test_authenticated_encryption_aka_secretbox_happy_path_works() ! {
+	assert libsodium.sodium_init() >= 0
+
 	//https://doc.libsodium.org/secret-key_cryptography/secretbox
 	to_be_encrypted := r'x'
 	password_for_encdec := "password123"
@@ -54,6 +58,8 @@ fn test_authenticated_encryption_aka_secretbox_happy_path_works() ! {
 }
 
 fn test_authenticated_encryption_aka_secretbox_tampering_detection_works() ! {
+	assert libsodium.sodium_init() >= 0
+
 	//https://doc.libsodium.org/secret-key_cryptography/secretbox
 	to_be_encrypted := r'¥ .	€/$ąęŹŻŁПЖДäüöß'
 	password_for_encdec := "password123"

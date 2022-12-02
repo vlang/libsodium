@@ -1,11 +1,9 @@
-module libsodium_extensions
-
-import libsodium
+module libsodium
 
 const (
-	crypto_pwhash_argon2id_saltbytes = libsodium.crypto_pwhash_argon2id_saltbytes()
-	crypto_pwhash_passwd_min = libsodium.crypto_pwhash_passwd_min()
-	crypto_pwhash_passwd_max = libsodium.crypto_pwhash_passwd_max()
+	crypto_pwhash_argon2id_saltbytes = crypto_pwhash_argon2id_saltbytes()
+	crypto_pwhash_passwd_min = crypto_pwhash_passwd_min()
+	crypto_pwhash_passwd_max = crypto_pwhash_passwd_max()
 )
 
 //modeled after https://doc.libsodium.org/password_hashing/default_phf
@@ -27,7 +25,7 @@ fn build_random_salt_argon2id13() !SaltForArgon2id13 {
 	}
 
 	salt := []u8{len:int(crypto_pwhash_argon2id_saltbytes)}
-	libsodium.randombytes_buf(salt.data, usize(salt.len)) //always successful
+	randombytes_buf(salt.data, usize(salt.len)) //always successful
 
 	return SaltForArgon2id13{salt}
 }
@@ -43,23 +41,23 @@ pub fn hash_password_argon2id13(key_len usize, clear_text_password string, salt 
 	}
 	
 	opslimit := match limit {
-		.moderate {libsodium.crypto_pwhash_opslimit_moderate()}
-		.interactive {libsodium.crypto_pwhash_opslimit_interactive()}
-		.sensitive {libsodium.crypto_pwhash_opslimit_sensitive()}
+		.moderate {crypto_pwhash_opslimit_moderate()}
+		.interactive {crypto_pwhash_opslimit_interactive()}
+		.sensitive {crypto_pwhash_opslimit_sensitive()}
 	}
 		
 	assert opslimit > 0
 
 	memlimit := match limit {
-		.moderate { libsodium.crypto_pwhash_memlimit_moderate() }
-		.interactive { libsodium.crypto_pwhash_memlimit_interactive() }
-		.sensitive { libsodium.crypto_pwhash_memlimit_sensitive() }
+		.moderate { crypto_pwhash_memlimit_moderate() }
+		.interactive { crypto_pwhash_memlimit_interactive() }
+		.sensitive { crypto_pwhash_memlimit_sensitive() }
 	} 
 	assert memlimit > 0
 
-	alg := libsodium.crypto_pwhash_alg_argon2id13()
+	alg := crypto_pwhash_alg_argon2id13()
 
- 	had_error := libsodium.crypto_pwhash(
+ 	had_error := crypto_pwhash(
 		result.data, u64(result.len), 
 		clear_text_password.str, u64(clear_text_password.len),
 		salt.salt_array.data, 

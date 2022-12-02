@@ -2,7 +2,6 @@ module xchacha20poly1305_ietf
 
 import libsodium
 import math
-import libsodium_extensions
 
 const (
 	crypto_aead_xchacha20poly1305_ietf_abytes = libsodium.crypto_aead_xchacha20poly1305_ietf_abytes()
@@ -22,7 +21,7 @@ pub struct Nonce {
 //hashing and salting is crucial. Passwords that are not hashed are not utilizing whole range of key values. Salting prevents practical dictionary attacks.
 pub struct HashedPassword {
 	pub:
-		salt libsodium_extensions.SaltForArgon2id13
+		salt libsodium.SaltForArgon2id13
 		hash_array []u8
 }
 
@@ -45,17 +44,17 @@ fn build_nonce() !Nonce {
 	return Nonce{nonce_array:nonce}
 }
 
-pub fn hash_password_full(clear_text_password string, salt libsodium_extensions.SaltForArgon2id13, limit libsodium_extensions.PwHashLimit) !HashedPassword {
+pub fn hash_password_full(clear_text_password string, salt libsodium.SaltForArgon2id13, limit libsodium.PwHashLimit) !HashedPassword {
 	key_len := crypto_aead_xchacha20poly1305_ietf_keybytes
 
 	return HashedPassword{
-		hash_array:libsodium_extensions.hash_password_argon2id13(key_len, clear_text_password, salt, limit)!,
+		hash_array:libsodium.hash_password_argon2id13(key_len, clear_text_password, salt, limit)!,
 		salt:salt
 	}
 }
 
-pub fn hash_password(clear_text_password string, limit libsodium_extensions.PwHashLimit) !HashedPassword {
-	salt := libsodium_extensions.build_random_salt_argon2id13()!
+pub fn hash_password(clear_text_password string, limit libsodium.PwHashLimit) !HashedPassword {
+	salt := libsodium.build_random_salt_argon2id13()!
 	return hash_password_full(clear_text_password, salt, limit)
 }
 
