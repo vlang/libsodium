@@ -510,10 +510,11 @@ pub fn crypto_pwhash_memlimit_sensitive() usize {
 	return C.crypto_pwhash_memlimit_sensitive()
 }
 
-fn C.crypto_pwhash(out &u8, outlen u64, passwd &char, passwdlen u64, salt &u8, opslimit u64, memlimit usize, alg int) int
+fn C.crypto_pwhash(out &u8, outlen u64, passwd &u8, passwdlen u64, salt &u8, opslimit u64, memlimit usize, alg int) int
 
-pub fn crypto_pwhash(out &u8, outlen u64, passwd &char, passwdlen u64, salt &u8, opslimit u64, memlimit usize, alg int) int {
-	return C.crypto_pwhash(out, outlen, passwd, passwdlen, salt, opslimit, memlimit, alg)
+pub fn crypto_pwhash(out &u8, outlen u64, passwd &u8, passwdlen u64, salt &u8, opslimit u64, memlimit usize, alg int) int {
+	return C.crypto_pwhash(out, outlen, &char(passwd), passwdlen, salt, opslimit, memlimit,
+		alg)
 }
 
 fn C.crypto_pwhash_primitive() &char
