@@ -94,4 +94,3 @@ pub fn (box Box) decrypt_string(b []u8) string {
 	}
 	return unsafe { decrypted.vstring_with_len(len) }
 }
-
