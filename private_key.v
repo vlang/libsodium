@@ -26,6 +26,25 @@ pub fn new_private_key() PrivateKey {
 	return pk
 }
 
+pub fn crypto_kx_seed_keypair(seed []u8) PrivateKey {
+	mut pk := PrivateKey{
+		public_key: []u8{len: public_key_size}
+		secret_key: []u8{len: secret_key_size}
+	}
+
+	if seed.len != C.crypto_kx_SEEDBYTES {
+		return pk
+	}
+
+	x := C.crypto_kx_seed_keypair(pk.public_key.data, pk.secret_key.data, seed.data)
+
+	if x != 0 {
+		// TODO handle errors
+	}
+
+	return pk
+}
+
 pub fn new_box(private_key PrivateKey, public_key []u8) Box {
 	box := Box{
 		key: private_key
@@ -75,3 +94,4 @@ pub fn (box Box) decrypt_string(b []u8) string {
 	}
 	return unsafe { decrypted.vstring_with_len(len) }
 }
+

@@ -2892,3 +2892,7 @@ pub fn crypto_secretbox_keybytes() usize {
 }
 
 fn C.crypto_secretbox_keygen(&u8)
+
+fn C.crypto_kx_seed_keypair(pk &u8, sk &u8, seed &u8) int
+
+fn C.crypto_sign_seed_keypair(pk &u8, sk &u8, seed &u8) int

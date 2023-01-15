@@ -29,6 +29,12 @@ pub fn generate_signing_key() SigningKey {
 	return res
 }
 
+pub fn new_signing_key_seed(seed []u8) SigningKey {
+	res := SigningKey{}
+	C.crypto_sign_seed_keypair(&res.verify_key.public_key[0], &res.secret_key[0], seed.data)
+	return res
+}
+
 pub fn (key VerifyKey) verify_string(s string) bool {
 	len := s.len - libsodium.sign_len
 	buf := []u8{len: len}
