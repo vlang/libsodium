@@ -23,10 +23,43 @@ pub fn new_signing_key(public_key [public_key_size]u8, secret_key [secret_key_si
 	return res
 }
 
+pub fn generate_ed25519_signing_key() SigningKey {
+	mut pk := SigningKey{
+		secret_key: [secret_key_size]u8{}
+		verify_key: VerifyKey{
+			public_key: [public_key_size]u8{}
+		}
+	}
+
+	x := crypto_sign_ed25519_keypair(pk.verify_key.public_key[0], pk.secret_key[0])
+
+	if x != 0 {
+		// TODO handle errors
+	}
+	return pk
+}
+
 pub fn generate_signing_key() SigningKey {
 	res := SigningKey{}
 	C.crypto_sign_keypair(&res.verify_key.public_key[0], &res.secret_key[0])
 	return res
+}
+
+pub fn new_ed25519_signing_key_seed(seed []u8) SigningKey {
+	mut pk := SigningKey{
+		secret_key: [secret_key_size]u8{}
+		verify_key: VerifyKey{
+			public_key: [public_key_size]u8{}
+		}
+	}
+
+	x := crypto_sign_ed25519_seed_keypair(pk.verify_key.public_key[0], pk.secret_key[0],
+		seed.data)
+
+	if x != 0 {
+		// TODO handle errors
+	}
+	return pk
 }
 
 pub fn new_signing_key_seed(seed []u8) SigningKey {

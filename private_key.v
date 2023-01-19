@@ -26,6 +26,18 @@ pub fn new_private_key() PrivateKey {
 	return pk
 }
 
+pub fn new_private_key_from_signing_ed25519(s SigningKey) PrivateKey {
+	mut pk := PrivateKey{
+		public_key: []u8{len: public_key_size}
+		secret_key: []u8{len: secret_key_size}
+	}
+
+	crypto_sign_ed25519_pk_to_curve25519(pk.public_key.data, s.verify_key.public_key[0])
+	crypto_sign_ed25519_sk_to_curve25519(pk.secret_key.data, s.secret_key[0])
+
+	return pk
+}
+
 pub fn crypto_kx_seed_keypair(seed []u8) PrivateKey {
 	mut pk := PrivateKey{
 		public_key: []u8{len: public_key_size}
