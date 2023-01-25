@@ -4,7 +4,7 @@ const (
 	sign_len = 64
 )
 
-struct SigningKey {
+pub struct SigningKey {
 	secret_key [secret_key_size]u8
 pub:
 	verify_key VerifyKey
