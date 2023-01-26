@@ -10,7 +10,8 @@ pub:
 	verify_key VerifyKey
 }
 
-struct VerifyKey {
+pub struct VerifyKey {
+pub:
 	public_key [public_key_size]u8
 }
 
