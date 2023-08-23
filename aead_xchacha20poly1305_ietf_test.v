@@ -101,11 +101,10 @@ fn test_aead_xchacha20poly1305_without_additional_data_tampering_detection_works
 		nonce: encrypted.nonce
 	}
 
-	mut failed := false
-
-	aeadmod.decrypt_without_additional_data(hashed_passwd, encrypted_tampered) or { failed = true }
-
-	assert failed
+	aeadmod.decrypt_without_additional_data(hashed_passwd, encrypted_tampered) or {
+		assert true
+		return
+	}
 }
 
 fn test_aead_xchacha20poly1305_with_additional_data_ietf_happy_path_works() {
@@ -144,12 +143,11 @@ fn test_aead_xchacha20poly1305_with_additional_data_tampering_detection_works_fo
 		nonce: encrypted.nonce
 	}
 
-	mut failed := false
-
 	aeadmod.decrypt_with_additional_data(additional_data_needed_for_decription, hashed_passwd,
-		encrypted_tampered) or { failed = true }
-
-	assert failed
+		encrypted_tampered) or {
+		assert true
+		return
+	}
 }
 
 fn test_aead_xchacha20poly1305_with_additional_data_tampering_detection_works_for_corrupted_additional_data() ! {
@@ -162,12 +160,9 @@ fn test_aead_xchacha20poly1305_with_additional_data_tampering_detection_works_fo
 	encrypted := aeadmod.encrypt_with_additional_data('something'.bytes(), hashed_passwd,
 		in_clear_text_to_encrypt.bytes())!
 
-	mut failed := false
-
 	// additional data different than one used for encryption
 	aeadmod.decrypt_with_additional_data('someThing'.bytes(), hashed_passwd, encrypted) or {
-		failed = true
+		assert true
+		return
 	}
-
-	assert failed
 }
