@@ -66,7 +66,7 @@ fn get_crypto_box_messagebytes_max_as_int() !int {
 	}
 
 	messagebytes_max := if messagebytes_max_raw > u64(math.max_i32) {
-		math.max_i32
+		int(math.max_i32)
 	} else {
 		int(messagebytes_max_raw)
 	}
