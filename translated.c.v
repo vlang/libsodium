@@ -9,6 +9,8 @@ module libsodium
 #define UNSIGNED_LONG_LONG unsigned long long
 #define ULLCAST(x) (UNSIGNED_LONG_LONG *)(x)
 
+type C.UNSIGNED_LONG_LONG = u64
+
 fn C.ULLCAST(x &u64) &C.UNSIGNED_LONG_LONG
 
 const ( // empty enum
