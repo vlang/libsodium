@@ -9,9 +9,10 @@ pub const (
 )
 
 pub struct SecretBox {
-	nonce [24]u8
 mut:
 	key [32]u8
+pub:
+	nonce [24]u8
 }
 
 pub fn new_secret_box(key string) SecretBox {
