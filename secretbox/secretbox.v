@@ -1,6 +1,5 @@
 module secretbox
 
-import math
 import libsodium
 
 const (
@@ -65,8 +64,8 @@ fn get_crypto_box_messagebytes_max_as_int() !int {
 		return error('crypto_box_messagebytes_max is negative')
 	}
 
-	messagebytes_max := if messagebytes_max_raw > u64(math.max_i32) {
-		int(math.max_i32)
+	messagebytes_max := if messagebytes_max_raw > u64(max_i32) {
+		int(max_i32)
 	} else {
 		int(messagebytes_max_raw)
 	}
@@ -90,7 +89,7 @@ fn encrypt_using_password_and_nonce(hashed_password HashedPassword, data_to_encr
 	assert int(secretbox.crypto_secretbox_macbytes) > 0
 	encrypted_len_needed_raw := u64(secretbox.crypto_secretbox_macbytes) + u64(data_to_encrypt.len)
 	assert encrypted_len_needed_raw > 0
-	assert encrypted_len_needed_raw <= u64(math.max_i32)
+	assert encrypted_len_needed_raw <= u64(max_i32)
 	encrypted_len_needed := int(encrypted_len_needed_raw)
 
 	encrypted := []u8{len: encrypted_len_needed}
