@@ -68,8 +68,8 @@ fn get_crypto_box_messagebytes_max_as_int() !int {
 		return error('crypto_aead_xchacha20poly1305_ietf_messagebytes_max is negative')
 	}
 
-	messagebytes_max := if messagebytes_max_raw > u64(math.max_i32) {
-		int(math.max_i32)
+	messagebytes_max := if messagebytes_max_raw > u64(max_i32) {
+		int(max_i32)
 	} else {
 		int(messagebytes_max_raw)
 	}
@@ -96,7 +96,7 @@ fn encrypt_using_password_and_nonce(hashed_password HashedPassword, data_to_encr
 	encrypted_len_raw := u64(data_to_encrypt.len) +
 		u64(xchacha20poly1305_ietf.crypto_aead_xchacha20poly1305_ietf_abytes)
 
-	assert encrypted_len_raw <= u64(math.max_i32)
+	assert encrypted_len_raw <= u64(max_i32)
 	encrypted_len := int(encrypted_len_raw)
 
 	mut encrypted := []u8{len: encrypted_len}
