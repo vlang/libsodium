@@ -3,12 +3,10 @@ module xchacha20poly1305_ietf
 import libsodium
 import math
 
-const (
-	crypto_aead_xchacha20poly1305_ietf_abytes           = libsodium.crypto_aead_xchacha20poly1305_ietf_abytes()
-	crypto_aead_xchacha20poly1305_ietf_keybytes         = libsodium.crypto_aead_xchacha20poly1305_ietf_keybytes()
-	crypto_aead_xchacha20poly1305_ietf_npubbytes        = libsodium.crypto_aead_xchacha20poly1305_ietf_npubbytes()
-	crypto_aead_xchacha20poly1305_ietf_messagebytes_max = libsodium.crypto_aead_xchacha20poly1305_ietf_messagebytes_max()
-)
+const crypto_aead_xchacha20poly1305_ietf_abytes = libsodium.crypto_aead_xchacha20poly1305_ietf_abytes()
+const crypto_aead_xchacha20poly1305_ietf_keybytes = libsodium.crypto_aead_xchacha20poly1305_ietf_keybytes()
+const crypto_aead_xchacha20poly1305_ietf_npubbytes = libsodium.crypto_aead_xchacha20poly1305_ietf_npubbytes()
+const crypto_aead_xchacha20poly1305_ietf_messagebytes_max = libsodium.crypto_aead_xchacha20poly1305_ietf_messagebytes_max()
 
 // modeled after https://doc.libsodium.org/secret-key_cryptography/aead/chacha20-poly1305/xchacha20-poly1305_construction
 

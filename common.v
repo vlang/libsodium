@@ -1,10 +1,8 @@
 module libsodium
 
-const (
-	crypto_pwhash_argon2id_saltbytes = crypto_pwhash_argon2id_saltbytes()
-	crypto_pwhash_passwd_min         = crypto_pwhash_passwd_min()
-	crypto_pwhash_passwd_max         = crypto_pwhash_passwd_max()
-)
+const crypto_pwhash_argon2id_saltbytes = crypto_pwhash_argon2id_saltbytes()
+const crypto_pwhash_passwd_min = crypto_pwhash_passwd_min()
+const crypto_pwhash_passwd_max = crypto_pwhash_passwd_max()
 
 // modeled after https://doc.libsodium.org/password_hashing/default_phf
 

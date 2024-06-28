@@ -1,8 +1,6 @@
 module libsodium
 
-const (
-	sign_len = 64
-)
+const sign_len = 64
 
 pub struct SigningKey {
 	secret_key [secret_key_size]u8

@@ -2,12 +2,10 @@ module secretbox
 
 import libsodium
 
-const (
-	crypto_secretbox_keybytes   = libsodium.crypto_secretbox_keybytes()
-	crypto_secretbox_macbytes   = libsodium.crypto_secretbox_macbytes()
-	crypto_box_messagebytes_max = libsodium.crypto_box_messagebytes_max()
-	crypto_box_noncebytes       = libsodium.crypto_box_noncebytes()
-)
+const crypto_secretbox_keybytes = libsodium.crypto_secretbox_keybytes()
+const crypto_secretbox_macbytes = libsodium.crypto_secretbox_macbytes()
+const crypto_box_messagebytes_max = libsodium.crypto_box_messagebytes_max()
+const crypto_box_noncebytes = libsodium.crypto_box_noncebytes()
 
 // https://doc.libsodium.org/secret-key_cryptography/secretbox
 

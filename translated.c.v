@@ -13,13 +13,12 @@ type C.UNSIGNED_LONG_LONG = u64
 
 fn C.ULLCAST(x &u64) &C.UNSIGNED_LONG_LONG
 
-const ( // empty enum
-	blake2b_blockbytes    = 0
-	blake2b_outbytes      = 1
-	blake2b_keybytes      = 2
-	blake2b_saltbytes     = 3
-	blake2b_personalbytes = 4
-)
+// empty enum
+const blake2b_blockbytes = 0
+const blake2b_outbytes = 1
+const blake2b_keybytes = 2
+const blake2b_saltbytes = 3
+const blake2b_personalbytes = 4
 
 /*
 // struct decl name="blake2b_param_"
@@ -591,17 +590,16 @@ enum Argon2_type {
 	argon2_id
 }
 
-const ( // empty enum
-	argon2_version_number        = 0
-	argon2_block_size            = 1
-	argon2_qwords_in_block       = 2
-	argon2_owords_in_block       = 3
-	argon2_hwords_in_block       = 4
-	argon2_512bit_words_in_block = 5
-	argon2_addresses_in_block    = 6
-	argon2_prehash_digest_length = 7
-	argon2_prehash_seed_length   = 8
-)
+// empty enum
+const argon2_version_number = 0
+const argon2_block_size = 1
+const argon2_qwords_in_block = 2
+const argon2_owords_in_block = 3
+const argon2_hwords_in_block = 4
+const argon2_512bit_words_in_block = 5
+const argon2_addresses_in_block = 6
+const argon2_prehash_digest_length = 7
+const argon2_prehash_seed_length = 8
 
 // struct decl name="block_"
 // typedef struct

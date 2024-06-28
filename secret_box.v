@@ -1,12 +1,14 @@
 module libsodium
 
-pub const (
-	key_size        = 32 // int(C.crypto_secretbox_KEYBYTES)
-	nonce_size      = 24 // int(C.crypto_secretbox_NONCEBYTES)
-	mac_size        = 16 //  int(C.crypto_secretbox_MACBYTES)
-	public_key_size = 32 //  int(C.crypto_secretbox_PUBLICKEYBYTES)
-	secret_key_size = 32 //  int(C.crypto_secretbox_PUBLICKEYBYTES)
-)
+pub const key_size = 32 // int(C.crypto_secretbox_KEYBYTES)
+
+pub const nonce_size = 24 // int(C.crypto_secretbox_NONCEBYTES)
+
+pub const mac_size = 16 //  int(C.crypto_secretbox_MACBYTES)
+
+pub const public_key_size = 32 //  int(C.crypto_secretbox_PUBLICKEYBYTES)
+
+pub const secret_key_size = 32 //  int(C.crypto_secretbox_PUBLICKEYBYTES)
 
 pub struct SecretBox {
 	nonce [24]u8
