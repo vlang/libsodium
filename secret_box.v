@@ -11,9 +11,10 @@ pub const public_key_size = 32 //  int(C.crypto_secretbox_PUBLICKEYBYTES)
 pub const secret_key_size = 32 //  int(C.crypto_secretbox_PUBLICKEYBYTES)
 
 pub struct SecretBox {
-	nonce [24]u8
 mut:
 	key [32]u8
+pub:
+	nonce [24]u8
 }
 
 pub fn new_secret_box(key string) SecretBox {
