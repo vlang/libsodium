@@ -59,7 +59,7 @@ pub fn crypto_kx_seed_keypair(seed []u8) PrivateKey {
 
 pub fn new_box(private_key PrivateKey, public_key []u8) Box {
 	box := Box{
-		key: private_key
+		key:        private_key
 		public_key: public_key
 	}
 	return box

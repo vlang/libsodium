@@ -81,7 +81,7 @@ fn test_authenticated_encryption_aka_secretbox_tampering_detection_works() ! {
 
 	encrypted_tampered := sb.Encrypted{
 		encrypted_array: tampered_encrypted_bytes
-		nonce: encrypted.nonce
+		nonce:           encrypted.nonce
 	}
 
 	mut failed := false

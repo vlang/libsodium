@@ -39,7 +39,7 @@ fn test_aead_xchacha20poly1305_without_additional_data_ietf_verify() {
 		encrypted_array: [u8(16), 38, 240, 142, 126, 206, 231, 94, 73, 66, 116, 107, 174, 189,
 			107, 181, 172, 78, 247, 105, 88, 189, 67, 74, 231, 87, 126, 64, 146, 30, 114, 31, 163,
 			200]
-		nonce: nonce
+		nonce:           nonce
 		additional_data: []
 	}
 
@@ -72,7 +72,7 @@ fn test_aead_xchacha20poly1305_with_additional_data_ietf_verify() {
 		encrypted_array: [u8(16), 38, 240, 142, 126, 206, 231, 94, 73, 66, 116, 107, 174, 189,
 			107, 181, 172, 78, 10, 24, 184, 80, 175, 219, 9, 252, 229, 91, 119, 51, 202, 67, 125,
 			31]
-		nonce: nonce
+		nonce:           nonce
 		additional_data: [u8(1), 2, 3]
 	}
 
@@ -98,7 +98,7 @@ fn test_aead_xchacha20poly1305_without_additional_data_tampering_detection_works
 
 	encrypted_tampered := aeadmod.Encrypted{
 		encrypted_array: tampered_encrypted_bytes
-		nonce: encrypted.nonce
+		nonce:           encrypted.nonce
 	}
 
 	mut failed := false
@@ -141,7 +141,7 @@ fn test_aead_xchacha20poly1305_with_additional_data_tampering_detection_works_fo
 
 	encrypted_tampered := aeadmod.Encrypted{
 		encrypted_array: tampered_encrypted_bytes
-		nonce: encrypted.nonce
+		nonce:           encrypted.nonce
 	}
 
 	mut failed := false

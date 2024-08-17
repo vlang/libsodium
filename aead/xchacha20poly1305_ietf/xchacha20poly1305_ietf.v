@@ -127,7 +127,7 @@ fn encrypt_using_password_and_nonce(hashed_password HashedPassword, data_to_encr
 
 	return Encrypted{
 		encrypted_array: encrypted
-		nonce: nonce
+		nonce:           nonce
 		additional_data: additional_data
 	}
 }
