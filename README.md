@@ -57,3 +57,6 @@ nr iterations per sec for symmetric encryption: 1219000
 nr of ms for 10thousand iterations: 1413 for test asymm encryption
 nr iterations per sec for asymm encryption: 7000
 ```
+
+Use `build_random_salt_argon2id13()` to create a random salt for `hash_password_argon2id13`.
+The salt helper is also available to the `secretbox` and AEAD submodules.
