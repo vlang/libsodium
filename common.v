@@ -17,7 +17,8 @@ pub:
 	salt_array []u8
 }
 
-fn build_random_salt_argon2id13() !SaltForArgon2id13 {
+// build_random_salt_argon2id13 generates a salt for Argon2id password hashing.
+pub fn build_random_salt_argon2id13() !SaltForArgon2id13 {
 	if int(libsodium.crypto_pwhash_argon2id_saltbytes) <= 0 {
 		return error('salt len must be positive')
 	}
