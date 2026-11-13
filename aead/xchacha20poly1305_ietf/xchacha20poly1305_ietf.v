@@ -1,7 +1,6 @@
 module xchacha20poly1305_ietf
 
 import libsodium
-import math
 
 const crypto_aead_xchacha20poly1305_ietf_abytes = libsodium.crypto_aead_xchacha20poly1305_ietf_abytes()
 const crypto_aead_xchacha20poly1305_ietf_keybytes = libsodium.crypto_aead_xchacha20poly1305_ietf_keybytes()
