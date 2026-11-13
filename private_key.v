@@ -44,7 +44,7 @@ pub fn crypto_kx_seed_keypair(seed []u8) PrivateKey {
 		secret_key: []u8{len: secret_key_size}
 	}
 
-	if seed.len != C.crypto_kx_SEEDBYTES {
+	if seed.len != int(C.crypto_kx_seedbytes()) {
 		return pk
 	}
 
